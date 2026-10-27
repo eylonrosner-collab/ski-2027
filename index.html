@@ -16,6 +16,8 @@ nav button.on{background:var(--pri);color:#fff}
 .subnav button{flex:0 0 auto;border:1px solid #c7d2fe;background:#fff;color:var(--pri);padding:6px 13px;border-radius:99px;cursor:pointer;font-weight:600;font-size:.9rem}
 .subnav button.on{background:var(--pri);color:#fff;border-color:var(--pri)}
 #optB .subnav button{border-color:#ddd6fe;color:var(--b)}#optB .subnav button.on{background:var(--b);color:#fff}
+#optC .subnav button{border-color:#99f6e4;color:#0f766e}#optC .subnav button.on{background:#0f766e;color:#fff}
+.pill.c{background:#ccfbf1;color:#0f766e}.opt.c{border-top-color:#0f766e}.opt.c .k{color:#0f766e}.opt.c .btn{background:#0f766e}
 main{max-width:1150px;margin:auto;padding:18px 12px 60px}section.top{display:none}section.top.on{display:block}.sub{display:none}.sub.on{display:block}
 .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
 .card{background:var(--card);border-radius:14px;padding:16px;box-shadow:0 2px 10px #14213d12}
@@ -35,7 +37,7 @@ a{color:var(--pri)}.src{font-size:.8rem;color:var(--mut)}.warn{background:#fff7e
 .tl{list-style:none;padding:0;margin:0}.tl li{padding:10px 12px;border-inline-start:4px solid var(--acc);margin:8px 0;background:#fff;border-radius:10px;box-shadow:0 2px 8px #14213d10}.tl li.r{border-color:var(--red)}.tl li.g{border-color:#16a34a}.tl li.o{border-color:#f59e0b}.tl li.p{border-color:var(--b)}.tl li.past{opacity:.55}
 .tl b.d{display:inline-block;min-width:125px}
 ul.chk{list-style:none;padding:0}ul.chk li{padding:4px 0}ul.chk input{margin-inline-end:8px;transform:scale(1.2)}
-.cmp td:first-child{font-weight:700;color:var(--mut);white-space:nowrap}.win{background:#ecfdf5}
+.cmp{min-width:680px}.cmp td:first-child{font-weight:700;color:var(--mut);white-space:nowrap}.win{background:#ecfdf5}
 .opt{border-top:6px solid var(--a)}.opt.b{border-top-color:var(--b)}.opt .k{color:var(--a)}.opt.b .k{color:var(--b)}
 .btn{display:inline-block;margin-top:10px;background:var(--pri);color:#fff;border:0;border-radius:10px;padding:8px 14px;font-weight:700;cursor:pointer;text-decoration:none}.opt.b .btn{background:var(--b)}
 .pill{display:inline-block;padding:2px 9px;border-radius:99px;font-size:.8rem;font-weight:700}.pill.a{background:#dbeafe;color:var(--a)}.pill.b{background:#ede9fe;color:var(--b)}.pill.s{background:#dcfce7;color:#166534}.pill.x{background:#fee2e2;color:#991b1b}
@@ -44,7 +46,7 @@ ul.pc{margin:6px 0;padding-inline-start:20px}ul.pc li{margin:3px 0}
 footer{text-align:center;color:var(--mut);font-size:.85rem;padding:20px}
 @media(max-width:600px){.map{height:320px}td,th{font-size:.85rem;padding:6px 5px}.tl b.d{display:block}}
 </style></head><body>
-<header><h1>🏔️ סקי 2027 · משפחת רוזנר</h1><p>שתי אפשרויות פעילות לאותם תאריכים: <b>A · Madonna di Campiglio (Hotel Fortini)</b> מול <b>B · Breuil-Cervinia (HelloCHALET)</b></p>
+<header><h1>🏔️ סקי 2027 · משפחת רוזנר</h1><p>שתי אפשרויות פעילות לאותם תאריכים: <b>A · Madonna di Campiglio (Hotel Fortini)</b> מול <b>B · Breuil-Cervinia (HelloCHALET)</b> · ואופציה לתכנון: <b>C · Val Thorens</b> (לא הוזמן)</p>
 <div class="chips"><span class="chip">📅 א׳ 7.2 – ו׳ 12.2.2027 · 5 לילות</span><span class="chip">👨‍👩‍👧‍👦 6 נפשות</span><span class="chip">✈️ LY381 / LY382 · מלפנסה</span><span class="chip">⏳ לחופשה: <span id="cd"></span></span><span class="chip">🧭 להחלטה (7.1): <span id="cdd"></span></span></div></header>
 <nav id="tabs"></nav><main>
 
@@ -54,6 +56,7 @@ footer{text-align:center;color:var(--mut);font-size:.85rem;padding:20px}
 <div class="grid">
 <div class="card opt"><span class="pill a">אפשרות A</span><h3 style="margin-top:6px">🏨 Hotel Fortini · Madonna di Campiglio</h3><div class="k">€3,784.14</div>2 חדרים · ארוחת בוקר כלולה<br>40 מ׳ מ-Fortini Express · Skiarea ~155 ק״מ<br>אישור Booking: <b>6480885121</b><br><span class="mut">ביטול חינם עד ~2.2.2027 · מלפנסה ~264 ק״מ (~3:40 ש׳)</span><br><button class="btn" onclick="go('optA')">לכל הפרטים ←</button></div>
 <div class="card opt b"><span class="pill b">אפשרות B</span><h3 style="margin-top:6px">🏠 HelloCHALET · Breuil-Cervinia</h3><div class="k">€3,658</div>דירת חדר שינה + סלון · ללא ארוחות<br>Ski-in/ski-out · 157 ק״מ (352 עם צרמט)<br>אישור Booking: <b>6969036688</b><br><span class="mut">ביטול חינם עד 7.1.2027 23:59 · מלפנסה ~181 ק״מ (~2:20 ש׳)</span><br><button class="btn" onclick="go('optB')">לכל הפרטים ←</button></div>
+<div class="card opt c"><span class="pill c">אפשרות C · לא הוזמן</span><h3 style="margin-top:6px">🏔️ Val Thorens · 3 Vallées</h3><div class="k">€3,839–€4,951</div>דירות 2 חדרים ב-Booking · ללא ארוחות<br>הכפר הגבוה באירופה (2,300 מ׳) · 600 ק״מ<br><span class="mut">טיסות לז׳נבה – טרם נקבע · GVA ~200 ק״מ (~2:45 ש׳) · ביטול חינם עד 31.1 אם יוזמן</span><br><button class="btn" onclick="go('optC')">לכל הפרטים ←</button></div>
 <div class="card"><h3>👨‍👩‍👧‍👦 המשפחה</h3>אילון ושרון, יהלי (21), מאיה (18), עמרי (15), בר (11)<br>כולם ברמה בינונית (כחול/אדום)<br>🏂 בר רוצה ללמוד סנובורד</div>
 <div class="card"><h3>✈️ טיסות אל על · XBFIJ2</h3><b>הלוך:</b> LY381 · א׳ 7.2 · TLV 06:25 → MXP 09:45<br><b>חזור:</b> LY382 · ו׳ 12.2 · MXP 09:45 → TLV 14:35<br>6 נוסעים · אקונומי קלאסיק · מזוודה לכל אחד<br><span class="mut">ביטול עצמי בפורטל הצוות עד ~31.1 06:25 (בטוח: 30.1)</span><br><button class="btn" onclick="go('fly')">לטיסות ←</button></div>
 <div class="card"><h3>🚗 רכב · 750909865</h3>Italy Car Rent · VW T-Roc אוטומטית + שרשראות<br>מלפנסה, 7.2 11:30 → 12.2 11:30<br>$227.71 כולל הגנה מלאה<br><b style="color:var(--red)">⚠️ שעת ההחזרה (11:30) מאוחרת מהטיסה (09:45) – צריך לשנות</b><br><button class="btn" onclick="go('car')">לרכב ולוגיסטיקה ←</button></div>
@@ -78,6 +81,8 @@ footer{text-align:center;color:var(--mut);font-size:.85rem;padding:20px}
 <li class="p" data-d="2027-01-24"><b class="d">24.1.2027</b> 🔔 תזכורת: מועד ביטול הטיסות מתקרב</li>
 <li class="p" data-d="2027-01-29"><b class="d">29.1.2027</b> 🔔 תזכורת אחרונה לפני מועד ביטול הטיסות</li>
 <li class="r" data-d="2027-01-30"><b class="d">30.1.2027</b> ✈️ <b>מועד בטוח לביטול עצמי של הטיסות</b> (בפועל עד ~31.1 06:25 שעון ישראל – 7 ימים לפני ההמראה). אחרי זה רק דרך וואטסאפ, החזר מסים בשובר בלבד וללא החזר נקודות</li>
+<li class="p" data-d="2027-01-29"><b class="d">29.1.2027</b> <span class="pill c">C · אם יוזמן</span> ואל טורנס: מועד התשלום ב-Booking</li>
+<li data-d="2027-01-31"><b class="d">31.1.2027</b> <span class="pill c">C · אם יוזמן</span> ואל טורנס: מועד אחרון לביטול חינם</li>
 <li data-d="2027-01-31"><b class="d">~31.1.2027</b> <span class="pill b">B</span> הנכס גובה פיקדון נזקים <b>€500</b> (מוחזר) – רק אם נשארים בצ׳רביניה</li>
 <li class="r" data-d="2027-02-02"><b class="d">~2.2.2027</b> <span class="pill a">A</span> מועד אחרון לביטול חינם של Fortini</li>
 <li class="o" data-d="2027-02-05"><b class="d">5.2.2027 ~12:29</b> 🚗 מועד אחרון לביטול חינם של הרכב (05:29 שעון אינדיאנפוליס)</li>
@@ -311,35 +316,84 @@ footer{text-align:center;color:var(--mut);font-size:.85rem;padding:20px}
 </div>
 </section>
 
+<!-- ============ OPTION C ============ -->
+<section class="top" id="optC" data-t="🅲 ואל טורנס (תכנון)">
+<div class="subnav"></div>
+<div class="sub" id="c-ov" data-t="סקירה">
+<div class="card warn" style="margin-bottom:14px">📝 <b>לא הוזמן – אפשרות לתכנון בלבד.</b> טיסות לז׳נבה (GVA) – טרם נקבע. רכב VW T-Roc ממלפנסה <b>לא רלוונטי</b> לאפשרות זו. ⚠️ 7–12.2.2027 הוא השבוע הראשון של חופשת החורף בפריז (Zone C, 6–22.2) – צפוי עומס ומחירי חג.</div>
+<div class="grid">
+<div class="card"><div class="k" style="color:#0f766e">2,300 מ׳</div>הכפר הגבוה באירופה · שלג מהטובים באלפים<div class="src"><a href="https://ski.valthorens.com/en/6-days-3-valley-pass/" target="_blank">ski.valthorens.com</a></div></div>
+<div class="card"><div class="k" style="color:#0f766e">600 ק״מ</div>3 Vallées · 328 מסלולים · 162 מעליות · 50% ירוקים/כחולים<div class="src"><a href="https://ski.valthorens.com/en/6-days-3-valley-pass/" target="_blank">ski.valthorens.com</a></div></div>
+<div class="card"><h3>✈️ טיסות</h3>לז׳נבה – <b>טרם נקבע</b><br><span class="mut">ביום החזרה – לשקול לילה אחרון ליד ז׳נבה לפני טיסת בוקר.</span></div>
+<div class="card"><h3>👍 / 👎</h3><b>בעד:</b> הכפר הגבוה באירופה, השלג הטוב ביותר, 600 ק״מ, הרבה מקומות ski-in/out.<br><b>נגד:</b> עומס חופשות, הרכב עומד חונה כל השבוע, נסיעה ארוכה ביום העזיבה, מעט מקומות עם ציון 9+ ל-6 נפשות.</div>
+</div>
+</div>
+
+<div class="sub" id="c-stay" data-t="לינה">
+<p class="mut">נבדק בזמן אמת ב-Booking (Genius) ל-7–12.2.2027, 6 אורחים: כולם עם <b>ביטול חינם עד 31.1.2027</b>, <b>ללא תשלום עד 29.1.2027</b>, ללא ארוחות (מטבח עצמי).</p>
+<div class="grid">
+<div class="card"><h3>1️⃣ Mountain Hideaway with Ski-In and Ski Out</h3><div class="k" style="color:#0f766e">€3,839</div>2 חדרי שינה · 42 מ״ר · ski-in/ski-out<br>ציון 10 (2 ביקורות)<br><a href="https://www.booking.com/hotel/fr/mountain-hideaway-with-ski-in-and-ski-out.html" target="_blank">Booking</a></div>
+<div class="card"><h3>2️⃣ Ski-In Out with Wide Mountain Views</h3><div class="k" style="color:#0f766e">€4,296</div>2 חדרי שינה + סלון · 50 מ״ר · עד 6 אורחים<br>ציון 10 (3 ביקורות)<br><a href="https://www.booking.com/hotel/fr/ski-in-out-with-wide-mountain-views.html" target="_blank">Booking</a></div>
+<div class="card"><h3>3️⃣ Comfort with Balcony, Ski Access and parking</h3><div class="k" style="color:#0f766e">€4,951</div>2 חדרי שינה + סלון · חניה<br>ציון 9.8 (5 ביקורות)<br><a href="https://www.booking.com/hotel/fr/comfort-with-balcony-ski-access-and-parking-val-thorens.html" target="_blank">Booking</a></div>
+</div>
+<div class="card warn" style="margin-top:14px">❌ לא זמינים לתאריכים: Pashmina, Le Sherpa, Fahrenheit Seven, Koh-I Nor, Les Chalets du Thorens.<br><span class="mut">הערה: מגורים בצרפת נמכרים לעיתים שבת–שבת בחופשת פברואר; מלונות ב-Booking מקבלים בדרך כלל א׳–ו׳.</span></div>
+</div>
+
+<div class="sub" id="c-ski" data-t="סקיפס וציוד">
+<h2>🎟️ סקיפס 2026/27 · עונה גבוהה (4 מבוגרים + 2 ילדים)</h2>
+<div class="card tw"><table><tr><th>פס</th><th>מבוגר 18–74</th><th>ילד 5–17</th><th>משפחה</th></tr>
+<tr><td>3 Vallées · 4 ימים</td><td>€336.80</td><td>€276</td><td><b>€1,899</b></td></tr>
+<tr><td>Val Thorens–Orelle · 4 ימים</td><td>€294</td><td>€240.80</td><td><b>€1,658</b></td></tr>
+<tr><td>3 Vallées · 5 ימים</td><td>€421</td><td>€345</td><td><b>€2,374</b></td></tr>
+<tr><td>Val Thorens–Orelle · 5/6 ימים</td><td>€367.50</td><td>€301</td><td></td></tr>
+<tr><td>הרחבה ל-3 Vallées · יום 1</td><td>€51</td><td>€41.80</td><td></td></tr>
+</table><p class="mut">ימי סקי ריאליים: 8–11.2 (4 ימים); 7.2 ו-12.2 ימי נסיעה. מחיר ילד: עמרי ובר; מבוגר: אילון, שרון, יהלי, מאיה. Family Flex (כולם במחיר ילד) מחייב מקסימום 2 מבוגרים ופס של 5–6 ימים ומעלה.</p>
+<div class="src"><a href="https://ski.valthorens.com/wp-content/uploads/2026/08/TARIFS-HIVER-20262027-2.pdf" target="_blank">מחירון רשמי 2026/27 (PDF)</a></div></div>
+<h2>🎿 השכרת ציוד</h2>
+<div class="card">הערכה למשפחה, 4 ימים, הזמנה אונליין: <b>כ-€350–500</b>.<div class="src"><a href="https://www.alpy.com/blog/ski-hire-val-thorens/" target="_blank">alpy.com</a> · <a href="https://www.skiweekends.com/ski-resorts/val-thorens/ski-hire" target="_blank">SkiSet / Ski Weekends</a> · <a href="https://www.valthorens-intersport.com/en/" target="_blank">Intersport</a> · <a href="https://www.valthorens.com/en/ski/location/" target="_blank">valthorens.com</a></div></div>
+</div>
+
+<div class="sub" id="c-go" data-t="הגעה">
+<div class="grid">
+<div class="card"><h3>🚗 GVA → ואל טורנס</h3>~200 ק״מ · ~2:45 ש׳ (יותר בשלג/בשבת)<br>A41 → A430 → N90 → D117<br>אגרות בצרפת: ~€24.60 לכל כיוון<br>וויניטה שווייצרית: CHF 40 (כלולה בדרך כלל ברכב מהצד השווייצרי)<div class="src"><a href="https://gvaairport.com/transfers/val-thorens/" target="_blank">gvaairport.com</a> · <a href="https://cerfrejus.fr/autoroute-a41-entre-geneve-et-grenoble-tarifs-et-conseils" target="_blank">cerfrejus.fr</a></div></div>
+<div class="card"><h3>🔑 השכרה</h3>מומלץ לשכור ב<b>צד השווייצרי</b> של GVA – צמיגי חורף ווויניטה כלולים בדרך כלל.<br>חוק ציוד חורף בצרפת (Savoie, 1.11–31.3): 4 צמיגי 3PMSF או שרשראות/גרביים ברכב.<div class="src"><a href="https://www.genevatourism.org/geneva-airport-car-rental/" target="_blank">genevatourism.org</a></div></div>
+<div class="card"><h3>🅿️ חניה</h3>הכפר ללא רכבים – חניה מקורה כ-<b>€100 לשבוע</b> (P0/P1). הרכב עומד כל השבוע. להזמין אונליין עד 7 ימים לפני.<div class="src"><a href="https://www.valthorens.com/en/sejour/venir-a-val-thorens/parkings/" target="_blank">valthorens.com</a></div></div>
+<div class="card"><h3>🚌 בלי רכב</h3>Altibus: כ-<b>€268 לכל כיוון</b> למשפחה (~3:20 ש׳+)<br>הסעה פרטית (V-Class עד 7): <b>CHF 977 לכל כיוון</b><div class="src"><a href="https://www.altibus.com/en/arriving-by-plane/geneva-airport/" target="_blank">altibus.com</a> · <a href="https://gvaairport.com/transfers/val-thorens/" target="_blank">gvaairport.com</a></div></div>
+</div>
+<div class="card warn" style="margin-top:14px">🛬 יום החזרה: נסיעה של ~2:45 ש׳ לפני טיסה – לשקול לילה אחרון ליד ז׳נבה אם הטיסה בבוקר.</div>
+</div>
+</section>
+
 <!-- ============ COMPARISON ============ -->
 <section class="top" id="cmp" data-t="⚖️ השוואה">
-<p class="mut">שתי ההזמנות פעילות <b>לאותם תאריכים</b> (7–12.2.2027) – צריך לבטל אחת. ירוק = יתרון.</p>
+<p class="mut">A ו-B פעילות <b>לאותם תאריכים</b> (7–12.2.2027) – צריך לבטל אחת. C (ואל טורנס) לא הוזמנה – לתכנון בלבד. ירוק = יתרון בין A ל-B.</p>
 <div class="card tw"><table class="cmp">
-<tr><th></th><th><span class="pill a">A</span> Hotel Fortini · Madonna di Campiglio</th><th><span class="pill b">B</span> HelloCHALET · Breuil-Cervinia</th></tr>
-<tr><td>אישור Booking</td><td>6480885121</td><td>6969036688</td></tr>
-<tr><td>תאריכים</td><td colspan="2" style="text-align:center">אותם תאריכים: 7–12.2.2027 · 5 לילות · 6 אורחים (4 מבוגרים + 2 ילדים)</td></tr>
-<tr><td>מחיר לינה</td><td>€3,784.14 (כולל בוקר)</td><td class="win">€3,658 (לינה בלבד)</td></tr>
-<tr><td>ללילה / לאדם</td><td>~€757 / ~€631</td><td class="win">~€732 / ~€610</td></tr>
-<tr><td>תשלום</td><td>—</td><td>€0 היום · חיוב €3,598 ב-5.1 · פיקדון €500 מוחזר</td></tr>
-<tr><td>ארוחות</td><td class="win">ארוחת בוקר כלולה</td><td>ללא · מטבח מלא</td></tr>
-<tr><td>חדרים ומיטות</td><td class="win">2 חדרים (לארבעה + זוגי/טווין)</td><td>דירה אחת ~48 מ״ר: קינג + קומותיים + ספה בסלון · חדר רחצה 1</td></tr>
-<tr><td>גישה לסקי</td><td>40 מ׳ מ-Fortini Express</td><td class="win">Ski-in/ski-out, 15 מ׳ מ-Cretaz · במרכז הכפר</td></tr>
-<tr><td>אזור סקי</td><td>~155 ק״מ (Skiarea Campiglio)</td><td class="win">157 ק״מ איטלקי / 352 ק״מ עם צרמט</td></tr>
-<tr><td>גובה</td><td>852–2,504 מ׳</td><td class="win">עד 3,883 מ׳ (Klein Matterhorn)</td></tr>
-<tr><td>כחול/אדום/שחור</td><td class="win">32% / 47% / 21% (יותר כחולים)</td><td>25% / 68% / 8% (בעיקר אדום)</td></tr>
-<tr><td>סקיפס 5 ימים למבוגר</td><td>€331–€383 (לפי עונה)</td><td class="win">€288 איטלקי / €396 בינלאומי</td></tr>
-<tr><td>סקיפס משפחתי 4 ימים</td><td>לא חושב (קטגוריות גיל לא אומתו)</td><td>€1,178 איטלקי / €1,619 בינלאומי</td></tr>
-<tr><td>בר – סנובורד</td><td class="win">2 בתי ספר + Ursus Snowpark נבדקו</td><td>לא נבדק עדיין</td></tr>
-<tr><td>ציון Booking</td><td class="win">8.7 (972 ביקורות)</td><td>10 (2 ביקורות בלבד)</td></tr>
-<tr><td>נסיעה ממלפנסה</td><td>~264 ק״מ · ~3:40 ש׳</td><td class="win">~181 ק״מ · ~2:20 ש׳</td></tr>
-<tr><td>יציאה ב-12.2 (החזרת רכב ~07:00)</td><td>~03:00 לפנות בוקר</td><td class="win">~04:30 לפנות בוקר</td></tr>
-<tr><td>חניה</td><td>€10 ליום במלון</td><td>גראז׳ בתשלום, ~500 מ׳</td></tr>
-<tr><td>ביטול חינם עד</td><td class="win">~2.2.2027</td><td>7.1.2027 23:59</td></tr>
+<tr><th></th><th><span class="pill a">A</span> Hotel Fortini · Madonna di Campiglio</th><th><span class="pill b">B</span> HelloCHALET · Breuil-Cervinia</th><th><span class="pill c">C</span> Val Thorens · <i>לא הוזמן</i></th></tr>
+<tr><td>אישור Booking</td><td>6480885121</td><td>6969036688</td><td>— (לא הוזמן)</td></tr>
+<tr><td>תאריכים</td><td colspan="3" style="text-align:center">7–12.2.2027 (A+B מוזמנים; C אפשרי) · 5 לילות · 6 אורחים (4 מבוגרים + 2 ילדים)</td></tr>
+<tr><td>מחיר לינה</td><td>€3,784.14 (כולל בוקר)</td><td class="win">€3,658 (לינה בלבד)</td><td>€3,839–€4,951 (לינה בלבד, 3 דירות שנבדקו)</td></tr>
+<tr><td>ללילה / לאדם</td><td>~€757 / ~€631</td><td class="win">~€732 / ~€610</td><td>~€768–€990 / ~€640–€825</td></tr>
+<tr><td>תשלום</td><td>—</td><td>€0 היום · חיוב €3,598 ב-5.1 · פיקדון €500 מוחזר</td><td>ללא תשלום עד 29.1 (אם יוזמן)</td></tr>
+<tr><td>ארוחות</td><td class="win">ארוחת בוקר כלולה</td><td>ללא · מטבח מלא</td><td>ללא · מטבח</td></tr>
+<tr><td>חדרים ומיטות</td><td class="win">2 חדרים (לארבעה + זוגי/טווין)</td><td>דירה אחת ~48 מ״ר: קינג + קומותיים + ספה בסלון · חדר רחצה 1</td><td>דירות 2 חדרי שינה (+סלון), 42–50 מ״ר</td></tr>
+<tr><td>גישה לסקי</td><td>40 מ׳ מ-Fortini Express</td><td class="win">Ski-in/ski-out, 15 מ׳ מ-Cretaz · במרכז הכפר</td><td>Ski-in/ski-out (בדירות שנבדקו)</td></tr>
+<tr><td>אזור סקי</td><td>~155 ק״מ (Skiarea Campiglio)</td><td class="win">157 ק״מ איטלקי / 352 ק״מ עם צרמט</td><td>600 ק״מ (3 Vallées)</td></tr>
+<tr><td>גובה</td><td>852–2,504 מ׳</td><td class="win">עד 3,883 מ׳ (Klein Matterhorn)</td><td>כפר ב-2,300 מ׳ – הגבוה באירופה</td></tr>
+<tr><td>כחול/אדום/שחור</td><td class="win">32% / 47% / 21% (יותר כחולים)</td><td>25% / 68% / 8% (בעיקר אדום)</td><td>50% ירוקים/כחולים</td></tr>
+<tr><td>סקיפס 5 ימים למבוגר</td><td>€331–€383 (לפי עונה)</td><td class="win">€288 איטלקי / €396 בינלאומי</td><td>€421 (3 Vallées) / €367.50 (VT–Orelle)</td></tr>
+<tr><td>סקיפס משפחתי 4 ימים</td><td>לא חושב (קטגוריות גיל לא אומתו)</td><td>€1,178 איטלקי / €1,619 בינלאומי</td><td>€1,899 (3 Vallées) / €1,658 (VT–Orelle)</td></tr>
+<tr><td>בר – סנובורד</td><td class="win">2 בתי ספר + Ursus Snowpark נבדקו</td><td>לא נבדק עדיין</td><td>לא נבדק</td></tr>
+<tr><td>ציון Booking</td><td class="win">8.7 (972 ביקורות)</td><td>10 (2 ביקורות בלבד)</td><td>10 / 10 / 9.8 (2–5 ביקורות)</td></tr>
+<tr><td>נסיעה ממלפנסה</td><td>~264 ק״מ · ~3:40 ש׳</td><td class="win">~181 ק״מ · ~2:20 ש׳</td><td>— טיסה לז׳נבה: GVA ~200 ק״מ · ~2:45 ש׳ (+אגרות ~€24.60, וויניטה CHF 40)</td></tr>
+<tr><td>יציאה ב-12.2 (החזרת רכב ~07:00)</td><td>~03:00 לפנות בוקר</td><td class="win">~04:30 לפנות בוקר</td><td>לשקול לילה אחרון ליד ז׳נבה</td></tr>
+<tr><td>חניה</td><td>€10 ליום במלון</td><td>גראז׳ בתשלום, ~500 מ׳</td><td>~€100 לשבוע (כפר ללא רכבים)</td></tr>
+<tr><td>ביטול חינם עד</td><td class="win">~2.2.2027</td><td>7.1.2027 23:59</td><td>31.1.2027 (אם יוזמן)</td></tr>
 </table></div>
 <div class="grid" style="margin-top:14px">
 <div class="card opt"><h3><span class="pill a">A</span> קמפיליו – בעד ונגד</h3><b>👍 בעד</b><ul class="pc"><li>ארוחת בוקר לשישה ושני חדרים – יותר פרטיות ונוחות</li><li>מלון מבוסס: 8.7 על 972 ביקורות</li><li>יותר מסלולים כחולים; בתי ספר לסנובורד וסנופארק לבר כבר נבדקו</li><li>ביטול גמיש עד ~2.2</li></ul><b>👎 נגד</b><ul class="pc"><li>יקר בכ-€126 בלינה; סקיפס יקר יותר</li><li>נסיעה ארוכה ממלפנסה (~3:40), יציאה ~03:00 ביום החזרה</li><li>ייתכן רעש מהבר/כביש (ביקורות)</li></ul></div>
 <div class="card opt b"><h3><span class="pill b">B</span> צ׳רביניה – בעד ונגד</h3><b>👍 בעד</b><ul class="pc"><li>Ski-in/ski-out אמיתי במרכז הכפר</li><li>אזור סקי גבוה וגדול יותר, אפשרות ליום בצרמט</li><li>זול יותר בלינה ובסקיפס</li><li>קרוב יותר למלפנסה (~2:20)</li></ul><b>👎 נגד</b><ul class="pc"><li>דירה צפופה לשישה, חדר רחצה אחד, ספה בסלון</li><li>בלי ארוחות</li><li>רק 2 ביקורות</li><li>החלטה מוקדמת: חיוב 5.1, ביטול חינם עד 7.1</li><li>סנובורד לבר ומסעדות – עוד לא נבדקו</li></ul></div>
 </div>
+<div class="card opt c" style="margin-top:14px"><h3><span class="pill c">C</span> ואל טורנס – בעד ונגד (לא הוזמן)</h3><b>👍 בעד</b><ul class="pc"><li>הכפר הגבוה באירופה (2,300 מ׳) – השלג הטוב ביותר</li><li>600 ק״מ ב-3 Vallées</li><li>הרבה מקומות ski-in/ski-out</li></ul><b>👎 נגד</b><ul class="pc"><li>השבוע הראשון של חופשת פריז – עומס</li><li>רכב עומד כל השבוע (חניה ~€100)</li><li>נסיעה ארוכה ביום העזיבה – אולי לילה ליד ז׳נבה</li><li>מעט מקומות עם ציון 9+ ל-6; דירות קטנות; ללא ארוחות</li><li>טיסות לז׳נבה עוד לא נקבעו; ההזמנות לאל על ולרכב הן למלפנסה</li></ul></div>
 <div class="card" style="margin-top:14px"><b>סיכום:</b> צ׳רביניה זולה בכ-€126 בלינה, אבל בלי ארוחות; פורטיני כולל ארוחת בוקר לשישה, שני חדרים ופרטיות. צ׳רביניה נותנת ski-in/ski-out אמיתי, אזור סקי גדול וגבוה יותר, סקיפס זול יותר ונסיעה קצרה יותר ממלפנסה, אבל הדירה צפופה לשישה עם חדר רחצה אחד. <b>ההחלטה נדרשת עד 7.1.2027</b> (החיוב ב-5.1); פורטיני גמיש עד ~2.2.</div>
 </section>
 
@@ -359,6 +413,7 @@ footer{text-align:center;color:var(--mut);font-size:.85rem;padding:20px}
 <tr><td>חניה</td><td>€10 ליום במלון</td><td>גראז׳ בתשלום ~500 מ׳</td></tr>
 <tr><td>מסלול</td><td><a href="https://www.google.com/maps/dir/Milano+Malpensa+Airport/Hotel+Fortini+Madonna+di+Campiglio" target="_blank">גוגל מפות</a></td><td><a href="https://www.google.com/maps/dir/Milano+Malpensa+Airport/Via+J.+B.+Bich+16+Breuil-Cervinia" target="_blank">גוגל מפות</a></td></tr>
 </table><p class="mut">זמני נסיעה לפי OSRM ללא פקקים ושלג – בחורף לתכנן מרווח. שעות הגעה/יציאה הן הערכה.</p></div>
+<div class="card" style="margin-top:14px">ℹ️ <span class="pill c">C</span> לאפשרות ואל טורנס הרכב הזה לא רלוונטי (טיסה לז׳נבה) – שם עדיף רכב מהצד השווייצרי של GVA. ראו לשונית ואל טורנס ← הגעה.</div>
 <div class="card ok" style="margin-top:14px">✅ הזמנות מרץ השגויות בוטלו: HelloCHALET 6100201391 (חינם) ורכב 762317234 (החזר ₪649.66, עד 7 ימי עסקים). אין הזמנות פעילות במרץ.</div>
 <h3>✅ צ׳קליסט משותף (נשמר בדפדפן)</h3><div class="card"><ul class="chk" id="chk"></ul></div>
 </section>
