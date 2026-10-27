@@ -44,6 +44,27 @@ ul.chk{list-style:none;padding:0}ul.chk li{padding:4px 0}ul.chk input{margin-inl
 .fl{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.fl .t{font-size:1.4rem;font-weight:800}.fl .ar{flex:1;min-width:40px;border-top:2px dashed #94a3b8;position:relative}
 ul.pc{margin:6px 0;padding-inline-start:20px}ul.pc li{margin:3px 0}
 footer{text-align:center;color:var(--mut);font-size:.85rem;padding:20px}
+
+.tlx{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.tlx-in{position:relative;min-width:620px;padding:0 44px;margin-bottom:26px}
+.tlx-lane{position:relative;margin:4px 0 2px}
+.tlx-name{font-weight:700;font-size:.85rem;margin:6px 0 0}
+.tlx-marks{position:relative;height:72px}
+.tlx-bar{position:relative;height:26px;background:#e5e9f2;border-radius:8px;overflow:hidden}
+.tlx-seg{position:absolute;top:0;bottom:0;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 4px}
+.tlx-seg.ok{background:#16a34a}.tlx-seg.bad{background:#dc2626}.tlx-seg.warn{background:#f59e0b}.tlx-seg.stay{background:#2563eb}
+.tlx-m{position:absolute;bottom:0;transform:translateX(50%);display:flex;flex-direction:column;align-items:center;font-size:.72rem;line-height:1.15;white-space:nowrap}
+.tlx-m span{background:#fff;border:1px solid #cbd5e1;border-radius:6px;padding:1px 5px}
+.tlx-m i{display:block;width:2px;background:#475569}
+.tlx-m.r span{border-color:#dc2626;color:#991b1b;font-weight:700}.tlx-m.r i{background:#dc2626}
+.tlx-m.g span{border-color:#16a34a;color:#166534}.tlx-m.f span{border-color:#2563eb;color:#1e3a8a;font-weight:700}
+.tlx-now{position:absolute;top:0;bottom:0;width:0;border-inline-start:2px dashed #7c3aed;z-index:2;pointer-events:none}
+.tlx-now b{position:absolute;bottom:-22px;inset-inline-start:-2px;background:#7c3aed;color:#fff;border-radius:6px;padding:1px 6px;font-size:.72rem;white-space:nowrap}
+.tlx-ax{position:relative;height:30px;font-size:.7rem;color:var(--mut);margin-top:22px;border-top:1px solid #cbd5e1}
+.tlx-ax span{position:absolute;top:2px;transform:translateX(50%)}
+.tlx-leg{list-style:none;padding:0;margin:10px 0 0;font-size:.88rem}.tlx-leg li{padding:5px 0;border-bottom:1px solid #eef2f7;display:flex;gap:8px;flex-wrap:wrap;align-items:baseline}
+.tlx-leg .dl{font-weight:700;min-width:118px}.tlx-leg .left{margin-inline-start:auto;font-weight:700;white-space:nowrap}.tlx-leg .left.past{color:var(--mut);font-weight:400}.tlx-leg .left.soon{color:var(--red)}
+.tlx-key{display:flex;flex-wrap:wrap;gap:10px;font-size:.8rem;margin-top:8px}.tlx-key span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-inline-end:5px;vertical-align:-2px;background:var(--c)}
 @media(max-width:600px){.map{height:320px}td,th{font-size:.85rem;padding:6px 5px}.tl b.d{display:block}}
 </style></head><body>
 <header><h1>🏔️ סקי 2027 · משפחת רוזנר</h1><p>שלוש הזמנות מקבילות לאותם תאריכים:<br>🅰️ <bdi dir="ltr">Madonna di Campiglio (Hotel Fortini)</bdi><br>🅱️ <bdi dir="ltr">Breuil-Cervinia (HelloCHALET)</bdi><br>🅲 <bdi dir="ltr">Val Thorens (Mountain Hideaway)</bdi></p>
@@ -75,6 +96,8 @@ footer{text-align:center;color:var(--mut);font-size:.85rem;padding:20px}
 <tr class="mut"><td>רכב (מרץ, טעות)</td><td>762317234</td><td>מרץ 2027</td><td>החזר ₪649.66</td><td>—</td><td><span class="pill x">בוטל</span></td></tr>
 </table><p class="mut">אין הזמנות פעילות במרץ 2027.</p></div>
 
+<h2 style="margin-top:20px">📊 כל מועדי הביטול על ציר אחד</h2>
+<div class="card"><div class="tlx" id="tl-all"></div><p class="mut">רכב בז׳נבה (C): בתהליך הזמנה – מועד ביטול טרם ידוע. שעון ישראל.</p></div>
 <h2 style="margin-top:22px">🗓️ ציר זמן להחלטה</h2>
 <ul class="tl" id="tl">
 <li class="p" data-d="2027-01-03"><b class="d">3.1.2027</b> 🔔 תזכורת: החלטה פורטיני / צ׳רביניה / ואל טורנס</li>
@@ -83,7 +106,7 @@ footer{text-align:center;color:var(--mut);font-size:.85rem;padding:20px}
 <li class="p" data-d="2027-01-24"><b class="d">24.1.2027</b> 🔔 תזכורת: מועד ביטול הטיסות מתקרב</li>
 <li class="p" data-d="2027-01-29"><b class="d">29.1.2027</b> 🔔 תזכורת אחרונה לפני מועד ביטול הטיסות</li>
 <li data-d="2027-01-29"><b class="d">~29.1.2027</b> <span class="pill c">C</span> חיוב צפוי של ואל טורנס (€3,959.32) – לפי דף הנכס, לאמת</li>
-<li class="r" data-d="2027-01-30"><b class="d">30.1.2027</b> ✈️ <b>מועד בטוח לביטול עצמי של הטיסות</b> (בפועל עד ~31.1 06:25 שעון ישראל – 7 ימים לפני ההמראה). אחרי זה רק דרך וואטסאפ, החזר מסים בשובר בלבד וללא החזר נקודות</li>
+<li class="r" data-d="2027-01-30"><b class="d">30.1.2027</b> ✈️ <b>מועד בטוח לביטול עצמי של הטיסות</b> (בפועל עד ~31.1 06:25 שעון ישראל – 7 ימים לפני ההמראה). אחרי זה רק דרך וואטסאפ, החזר מסים בשובר בלבד והזכאות לא מוחזרת</li>
 <li class="r" data-d="2027-01-30"><b class="d">30.1.2027 23:59</b> <span class="pill c">C</span> <b>מועד אחרון לביטול חינם של ואל טורנס</b> (מ-31.1 00:00 דמי ביטול = המחיר המלא) · <b>חל באותו יום כמו מועד הביטול העצמי הבטוח של טיסות אל על</b></li>
 <li data-d="2027-01-31"><b class="d">~31.1.2027</b> <span class="pill b">B</span> הנכס גובה פיקדון נזקים <b>€500</b> (מוחזר) – רק אם נשארים בצ׳רביניה</li>
 <li class="r" data-d="2027-02-02"><b class="d">~2.2.2027</b> <span class="pill a">A</span> מועד אחרון לביטול חינם של Fortini</li>
@@ -100,10 +123,12 @@ footer{text-align:center;color:var(--mut);font-size:.85rem;padding:20px}
 <div class="card"><h3>🛫 הלוך · LY381 · א׳ 7.2.2027</h3><div class="fl"><div><div class="t">06:25</div>TLV · נתב״ג T3</div><div class="ar"></div><div class="mut">4:20 ש׳</div><div class="ar"></div><div><div class="t">09:45</div>MXP · מלפנסה T1</div></div><p class="mut">מושב אילון: 27A · איסוף הרכב 11:30 – כשעה וחצי אחרי הנחיתה ✔️</p></div>
 <div class="card"><h3>🛬 חזור · LY382 · ו׳ 12.2.2027</h3><div class="fl"><div><div class="t">09:45</div>MXP · מלפנסה T1</div><div class="ar"></div><div class="mut">3:50 ש׳</div><div class="ar"></div><div><div class="t">14:35</div>TLV · נתב״ג T3</div></div><p class="mut">מושב אילון: 41K · <b style="color:var(--red)">הרכב רשום להחזרה ב-11:30 – צריך להקדים</b></p></div>
 </div>
+<h2 style="margin-top:20px">🗓️ ציר זמן – ביטול הטיסות</h2>
+<div class="card"><div class="tlx" id="tl-fly"></div><p class="mut">ההמראה LY381: 7.2.2027 06:25 שעון ישראל. "7 ימים לפני" = ~31.1.2027 06:25; המועד הבטוח שקבענו: 30.1.2027. גללו הצידה במובייל.</p></div>
 <h2 style="margin-top:20px">↩️ מדיניות ביטול (טבלת הטבות צוות אל על)</h2>
 <div class="grid">
-<div class="card ok"><h3>מהרכישה ועד 7 ימים לפני הטיסה</h3>• ביטול עצמי בפורטל הצוות (אזור כרטיסי צוות)<br>• מסים ואגרות מוחזרים בכסף/שובר<br>• הנקודות מוחזרות (תוך כשעתיים)<br><b>מועד: עד ~31.1.2027 06:25 שעון ישראל · בטוח: 30.1.2027</b></div>
-<div class="card bad"><h3>בתוך 7 ימים לפני הטיסה</h3>• אי אפשר לבטל לבד – רק דרך שירותי נסיעות צוות בוואטסאפ<br>• מסים מוחזרים כשובר בלבד<br>• <b>ללא החזר נקודות</b></div>
+<div class="card ok"><h3>מהרכישה ועד 7 ימים לפני הטיסה</h3>• ביטול עצמי בפורטל הצוות (אזור כרטיסי צוות)<br>• מסים ואגרות מוחזרים בכסף/שובר<br>• הזכאות מוחזרת (תוך כשעתיים)<br><b>מועד: עד ~31.1.2027 06:25 שעון ישראל · בטוח: 30.1.2027</b></div>
+<div class="card bad"><h3>בתוך 7 ימים לפני הטיסה</h3>• אי אפשר לבטל לבד – רק דרך שירותי נסיעות צוות בוואטסאפ<br>• מסים מוחזרים כשובר בלבד<br>• <b>הזכאות לא מוחזרת</b></div>
 <div class="card"><h3>🔔 תזכורות</h3>• 3.1.2027 – החלטה על המלון<br>• 24.1.2027 – מועד ביטול הטיסות מתקרב<br>• 29.1.2027 – תזכורת אחרונה לפני מועד ביטול הטיסות</div>
 </div>
 </section>
@@ -118,6 +143,8 @@ footer{text-align:center;color:var(--mut);font-size:.85rem;padding:20px}
 <div class="card"><h3>🚡 מעליות קרובות (לפי Booking)</h3><table><tr><td>Fortini Express</td><td><b>40 מ׳</b></td></tr><tr><td>Grostè 1 Express (גונדולה)</td><td>250 מ׳</td></tr><tr><td>Pradalago Express</td><td>1.4 ק״מ</td></tr></table></div>
 <div class="card"><h3>🚗 ממלפנסה</h3>~264 ק״מ · ~3:40 ש׳ (OSRM, ללא פקקים ושלג)<br><span class="mut">ורונה הייתה קרובה יותר (~2.5 ש׳), אבל הטיסות והרכב במלפנסה.</span><br><a href="https://www.google.com/maps/dir/Milano+Malpensa+Airport/Hotel+Fortini+Madonna+di+Campiglio" target="_blank">מסלול בגוגל מפות</a></div>
 </div>
+<h2 style="margin-top:20px">🗓️ ציר זמן – ביטול Hotel Fortini</h2>
+<div class="card"><div class="tlx" id="tl-a"></div><p class="mut">מועד הביטול החינמי לפי ההזמנה: בערך 2.2.2027 (השעה המדויקת לא רשומה – לבדוק ב-Booking).</p></div>
 <h2 style="margin-top:22px">🗺️ מפה</h2><div id="mapA" class="map"></div>
 <p class="src">⚠️ המיקומים על המפה משוערים (לפי מיקום כללי, לא כתובות מדויקות), למעט האזור הכללי של המלון. מפה: © OpenStreetMap.</p>
 </div>
@@ -230,6 +257,8 @@ footer{text-align:center;color:var(--mut);font-size:.85rem;padding:20px}
 <div class="card"><h3>🕓 צ׳ק-אין / צ׳ק-אאוט</h3>צ׳ק-אין: א׳ 7.2.2027, <b>16:00–20:00</b><br><span class="mut">הגעה 20:00–01:00 – בתוספת תשלום</span><br>צ׳ק-אאוט: ו׳ 12.2.2027, <b>08:00–10:00</b> – <b style="color:var(--red)">אבל צריך לצאת בסביבות 04:30 לטיסה; לתאם יציאה מוקדמת/השארת מפתח</b><br>בצ׳ק-אין: תעודה מזהה + כרטיס אשראי</div>
 <div class="card"><h3>🚗 ממלפנסה</h3>~181 ק״מ · ~2:20 ש׳ (OSRM)<br>נחיתה 09:45 → רכב 11:30 → הגעה משוערת ~14:00, לפני הצ׳ק-אין (16:00). זמן לקניות בדרך.<br><a href="https://www.google.com/maps/dir/Milano+Malpensa+Airport/Via+J.+B.+Bich+16+Breuil-Cervinia" target="_blank">מסלול ממלפנסה</a></div>
 </div>
+<h2 style="margin-top:20px">🗓️ ציר זמן – ביטול HelloCHALET</h2>
+<div class="card"><div class="tlx" id="tl-b"></div></div>
 <h2 style="margin-top:22px">📸 תמונות</h2>
 <div class="gal"><img src="assets/cervinia/photo1.jpg" alt="" onclick="lb(this)"><img src="assets/cervinia/photo2.jpg" alt="" onclick="lb(this)"><img src="assets/cervinia/photo3.jpg" alt="" onclick="lb(this)"><img src="assets/cervinia/photo4.jpg" alt="" onclick="lb(this)"></div>
 <p class="src">תמונות: Booking.com</p>
@@ -340,6 +369,8 @@ footer{text-align:center;color:var(--mut);font-size:.85rem;padding:20px}
 <div class="card"><h3>🕓 צ׳ק-אין / צ׳ק-אאוט</h3>צ׳ק-אין: א׳ 7.2.2027 <b>מ-16:00</b><br>צ׳ק-אאוט: ו׳ 12.2.2027 <b>עד 10:00</b><br>כניסה עם קוד דלת – ההוראות נשלחות בהגעה</div>
 <div class="card ok"><h3>👨‍👩‍👦 אורחים</h3>3 מבוגרים + 2 ילדים (15, 12) – <b>תואם להזמנה</b><br>גולשים: 2 מבוגרים + 2 ילדים</div>
 </div>
+<h2 style="margin-top:20px">🗓️ ציר זמן – ביטול Mountain Hideaway</h2>
+<div class="card"><div class="tlx" id="tl-c"></div></div>
 <h2 style="margin-top:20px">💶 מחיר ותנאים</h2>
 <div class="grid"><div class="card"><table>
 <tr><td>דירה, 5 לילות (25% Genius)</td><td>€3,566.80</td></tr>
@@ -513,4 +544,38 @@ new Chart(document.getElementById('wxc'),{type:'bar',data:{labels:['weatherapi',
 new Chart(document.getElementById('pieB'),{type:'doughnut',data:{labels:['דירה ~$3,403','מע״מ ~$340','דמי שירות ~$279','מס עיר ~$67'],datasets:[{data:[3403,340,279,67],backgroundColor:['#1d4ed8','#0ea5e9','#f59e0b','#16a34a']}]}});
 new Chart(document.getElementById('pist'),{type:'doughnut',data:{labels:['כחול 39','אדום 107','שחור 12'],datasets:[{data:[39,107,12],backgroundColor:['#2563eb','#dc2626','#111']}]}})}
 window.addEventListener('hashchange',route);route();
+
+// ===== cancellation timelines =====
+(function(){
+const D=x=>new Date(x),DAY=864e5,S=D('2026-10-25T00:00:00+02:00'),E=D('2027-02-14T00:00:00+02:00');
+const BP=[[S,0],[D('2027-01-01T00:00:00+02:00'),26],[D('2027-01-25T00:00:00+02:00'),48],[E,100]];
+const pct=d=>{if(d<=S)return 0;if(d>=E)return 100;for(let i=1;i<BP.length;i++){const[a0,p0]=BP[i-1],[a1,p1]=BP[i];if(d<=a1)return p0+(d-a0)/(a1-a0)*(p1-p0)}return 100};
+const fd=d=>d.toLocaleDateString('he-IL',{day:'numeric',month:'numeric',timeZone:'Asia/Jerusalem'});
+const ff=d=>d.toLocaleDateString('he-IL',{day:'numeric',month:'numeric',year:'numeric',timeZone:'Asia/Jerusalem'});
+function left(d){const now=new Date(),n=Math.ceil((d-now)/DAY);if(d<now)return['עבר','past'];if(n<=1)return[(d-now)<DAY?'היום/מחר':'עוד יום אחד','soon'];return['עוד '+n+' ימים',n<=7?'soon':'']}
+const FLY=[{n:'✈️ טיסות אל על XBFIJ2',segs:[['2026-10-25T00:00:00+02:00','2027-01-31T06:25:00+02:00','ok','ביטול עצמי בפורטל · מסים וזכאות מוחזרים'],['2027-01-31T06:25:00+02:00','2027-02-07T06:25:00+02:00','bad','רק בוואטסאפ · הזכאות לא מוחזרת'],['2027-02-07T06:25:00+02:00','2027-02-12T09:45:00+02:00','stay','בחופשה']],
+ m:[['2027-01-30T23:59:00+02:00','30.1 מועד בטוח','r','מועד בטוח לביטול עצמי בפורטל (מסים בכסף/שובר, הזכאות מוחזרת)'],['2027-01-31T06:25:00+02:00','31.1 06:25','r','7 ימים לפני ההמראה – מכאן רק דרך וואטסאפ, מסים כשובר בלבד, הזכאות לא מוחזרת'],['2027-02-07T06:25:00+02:00','7.2 LY381','f','LY381 TLV 06:25 → MXP 09:45'],['2027-02-12T09:45:00+02:00','12.2 LY382','f','LY382 MXP 09:45 → TLV 14:35']]}];
+const A={n:'🅰️ Hotel Fortini · 6480885121',segs:[['2026-10-25T00:00:00+02:00','2027-02-02T23:59:00+02:00','ok','ביטול חינם'],['2027-02-02T23:59:00+02:00','2027-02-07T16:00:00+02:00','bad','דמי ביטול'],['2027-02-07T16:00:00+02:00','2027-02-12T10:00:00+02:00','stay','שהייה']],
+ m:[['2027-02-02T23:59:00+02:00','~2.2','r','סוף ביטול חינם (בערך 2.2.2027 – לאמת ב-Booking)',1],['2027-02-07T12:00:00+02:00','7.2 צ׳ק-אין','f','צ׳ק-אין',1]]};
+const B={n:'🅱️ HelloCHALET · 6969036688',segs:[['2026-10-25T00:00:00+02:00','2027-01-07T23:59:00+02:00','ok','ביטול חינם · €0 עד 5.1'],['2027-01-07T23:59:00+02:00','2027-02-07T16:00:00+02:00','bad','ביטול בתשלום (~US$3,742)'],['2027-02-07T16:00:00+02:00','2027-02-12T10:00:00+02:00','stay','שהייה']],
+ m:[['2027-01-05T12:00:00+02:00','5.1 חיוב','g','Booking מחייב €3,598 ל-Mastercard ••8135 (עדיין ניתן לבטל בחינם)',1],['2027-01-07T23:59:00+02:00','7.1 23:59','r','סוף ביטול חינם'],['2027-02-07T16:00:00+02:00','7.2 צ׳ק-אין','f','צ׳ק-אין 16:00–20:00']]};
+const C={n:'🅲 Mountain Hideaway · 6594931305',segs:[['2026-10-25T00:00:00+02:00','2027-01-30T23:59:00+02:00','ok','ביטול חינם'],['2027-01-30T23:59:00+02:00','2027-02-07T16:00:00+02:00','bad','דמי ביטול = המחיר המלא'],['2027-02-07T16:00:00+02:00','2027-02-12T10:00:00+02:00','stay','שהייה']],
+ m:[['2027-01-29T12:00:00+02:00','~29.1 חיוב','g','חיוב צפוי €3,959.32 (לפי הדף – לאמת)',1],['2027-01-30T23:59:00+02:00','30.1 23:59','r','סוף ביטול חינם; מ-31.1 00:00 דמי הביטול = המחיר המלא'],['2027-02-07T16:00:00+02:00','7.2 צ׳ק-אין','f','צ׳ק-אין מ-16:00']]};
+const CAR={n:'🚗 רכב מלפנסה · 750909865',segs:[['2026-10-25T00:00:00+02:00','2027-02-05T12:29:00+02:00','ok','ביטול חינם'],['2027-02-05T12:29:00+02:00','2027-02-07T11:30:00+02:00','bad','ללא ביטול חינם'],['2027-02-07T11:30:00+02:00','2027-02-12T11:30:00+02:00','stay','השכרה']],
+ m:[['2027-02-05T12:29:00+02:00','5.2 ~12:29','r','סוף ביטול חינם של הרכב (05:29 שעון אינדיאנפוליס)'],['2027-02-07T11:30:00+02:00','7.2 איסוף','f','איסוף במלפנסה 11:30']]};
+function render(id,lanes,legend){const el=document.getElementById(id);if(!el)return;const now=new Date();
+ let h='<div class="tlx-in">';
+ lanes.forEach(L=>{h+=`<div class="tlx-name">${L.n}</div><div class="tlx-lane"><div class="tlx-marks">`;
+  const lv=[];[...L.m].sort((a,b)=>D(a[0])-D(b[0])).forEach(m=>{const x=pct(D(m[0]));let k=0;while(lv[k]!=null&&Math.abs(x-lv[k])<9)k++;lv[k]=x;
+   h+=`<div class="tlx-m ${m[2]}" style="inset-inline-start:${x}%;bottom:0"><span${/[\u0590-\u05FF]/.test(m[1])?'':' dir="ltr"'}>${m[1]}</span><i style="height:${6+k*20}px"></i></div>`});
+  h+=`</div><div class="tlx-bar">`+L.segs.map(g=>{const a=pct(D(g[0])),b=pct(D(g[1]));return `<div class="tlx-seg ${g[2]}" style="inset-inline-start:${a}%;width:${b-a}%" title="${g[3]}">${g[3]}</div>`}).join('')+`</div></div>`});
+ const nx0=pct(new Date());h+='<div class="tlx-ax">';for(const t of ['2026-11-01','2026-12-01','2027-01-01','2027-01-25','2027-02-01','2027-02-07','2027-02-12']){const q=pct(D(t+'T00:00:00+02:00'));if(Math.abs(q-nx0)>7)h+=`<span style="inset-inline-start:${q}%">${ff(D(t+'T00:00:00+02:00'))}</span>`}h+='</div>';
+ const nx=pct(now);h+=`<div class="tlx-now" style="inset-inline-start:calc(44px + (100% - 88px) * ${nx/100});top:0;bottom:0"><b>היום ${fd(now)}${now>E?' (אחרי הטיסות)':''}</b></div>`;
+ h+='</div>';
+ h+='<div class="tlx-key"><span style="--c:#16a34a">ביטול חינם / עצמי</span><span style="--c:#dc2626">ביטול בתשלום / מוגבל</span><span style="--c:#2563eb">החופשה</span><span style="--c:#7c3aed">היום</span><span class="mut" style="--c:transparent">קנה מידה לא אחיד – ינואר–פברואר מוגדלים</span></div>';
+ const items=[];lanes.forEach(L=>L.m.forEach(m=>items.push([D(m[0]),m[3],lanes.length>1?L.n:'',m[4]])));items.sort((a,b)=>a[0]-b[0]);
+ h+='<ul class="tlx-leg">'+items.map(([d,t,n,nt])=>{const [l,c]=left(d);return `<li><span class="dl" dir="ltr">${ff(d)}${nt?'':' '+d.toLocaleTimeString('he-IL',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Jerusalem'})}</span><span>${n?n+' – ':''}${t}</span><span class="left ${c}">${l}</span></li>`}).join('')+'</ul>';
+ el.innerHTML=h}
+render('tl-fly',FLY);render('tl-a',[A]);render('tl-b',[B]);render('tl-c',[C]);render('tl-all',[FLY[0],B,C,A,CAR]);
+})();
 </script></body></html>
