@@ -1,0 +1,416 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>סקי 2027 · משפחת רוזנר · קמפיליו מול צ׳רביניה</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root{--bg:#f3f6fb;--card:#fff;--ink:#14213d;--mut:#5b6b86;--pri:#1d4ed8;--acc:#0ea5e9;--blue:#2563eb;--red:#dc2626;--blk:#111;--a:#1d4ed8;--b:#7c3aed}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+header{background:linear-gradient(135deg,#0b3d91,#1d4ed8 55%,#0ea5e9);color:#fff;padding:28px 18px 70px}
+header h1{margin:0;font-size:clamp(1.5rem,4vw,2.3rem)}header p{margin:6px 0 0;opacity:.9}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.chip{background:rgba(255,255,255,.18);padding:5px 12px;border-radius:99px;font-size:.9rem}
+nav{position:sticky;top:0;z-index:1000;display:flex;gap:6px;overflow-x:auto;padding:10px;margin:-50px 12px 0;background:#fff;border-radius:14px;box-shadow:0 6px 24px #0b3d9122}
+nav button{flex:0 0 auto;border:0;background:#eef2ff;color:var(--pri);padding:9px 14px;border-radius:10px;font-weight:600;cursor:pointer;font-size:.95rem}
+nav button.on{background:var(--pri);color:#fff}
+.subnav{display:flex;gap:6px;overflow-x:auto;margin:0 0 14px;padding-bottom:4px}
+.subnav button{flex:0 0 auto;border:1px solid #c7d2fe;background:#fff;color:var(--pri);padding:6px 13px;border-radius:99px;cursor:pointer;font-weight:600;font-size:.9rem}
+.subnav button.on{background:var(--pri);color:#fff;border-color:var(--pri)}
+#optB .subnav button{border-color:#ddd6fe;color:var(--b)}#optB .subnav button.on{background:var(--b);color:#fff}
+main{max-width:1150px;margin:auto;padding:18px 12px 60px}section.top{display:none}section.top.on{display:block}.sub{display:none}.sub.on{display:block}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.card{background:var(--card);border-radius:14px;padding:16px;box-shadow:0 2px 10px #14213d12}
+.card h3{margin:0 0 8px}.k{font-size:1.7rem;font-weight:800;color:var(--pri)}.mut{color:var(--mut);font-size:.9rem}
+h2{margin:8px 0 14px}.map{height:430px;border-radius:14px}
+table{width:100%;border-collapse:collapse}td,th{padding:7px;border-bottom:1px solid #e5e9f2;text-align:right;font-size:.93rem;vertical-align:top}
+.tw{overflow-x:auto}
+.dot{display:inline-block;width:11px;height:11px;border-radius:50%;margin-inline-end:6px;vertical-align:middle}
+details{background:#fff;border-radius:12px;margin:8px 0;box-shadow:0 2px 8px #14213d10}summary{padding:13px 15px;cursor:pointer;font-weight:700}details>div{padding:0 15px 14px}
+.flt{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}.flt button{border:1px solid #c7d2fe;background:#fff;border-radius:99px;padding:6px 13px;cursor:pointer}.flt button.on{background:var(--pri);color:#fff;border-color:var(--pri)}
+.tag{display:inline-block;font-size:.78rem;background:#e0f2fe;color:#075985;padding:2px 8px;border-radius:99px;margin-inline-end:4px}
+blockquote{margin:0;font-style:italic;direction:ltr;text-align:left}.q{border-inline-start:4px solid var(--acc)}.q.con{border-color:#f59e0b}
+.pm img{width:100%;border-radius:12px;cursor:zoom-in}
+.gal{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}.gal img{width:100%;height:190px;object-fit:cover;border-radius:12px;cursor:zoom-in}
+#lb{display:none;position:fixed;inset:0;background:#000d;z-index:3000;cursor:zoom-out;overflow:auto}#lb.fit{display:flex;align-items:center;justify-content:center}#lb.fit img{max-width:95vw;max-height:92vh}#lb.big img{width:2400px;max-width:none}
+a{color:var(--pri)}.src{font-size:.8rem;color:var(--mut)}.warn{background:#fff7ed;border:1px solid #fed7aa}.ok{background:#f0fdf4;border:1px solid #bbf7d0}.bad{background:#fef2f2;border:1px solid #fecaca}
+.tl{list-style:none;padding:0;margin:0}.tl li{padding:10px 12px;border-inline-start:4px solid var(--acc);margin:8px 0;background:#fff;border-radius:10px;box-shadow:0 2px 8px #14213d10}.tl li.r{border-color:var(--red)}.tl li.g{border-color:#16a34a}.tl li.o{border-color:#f59e0b}.tl li.p{border-color:var(--b)}.tl li.past{opacity:.55}
+.tl b.d{display:inline-block;min-width:125px}
+ul.chk{list-style:none;padding:0}ul.chk li{padding:4px 0}ul.chk input{margin-inline-end:8px;transform:scale(1.2)}
+.cmp td:first-child{font-weight:700;color:var(--mut);white-space:nowrap}.win{background:#ecfdf5}
+.opt{border-top:6px solid var(--a)}.opt.b{border-top-color:var(--b)}.opt .k{color:var(--a)}.opt.b .k{color:var(--b)}
+.btn{display:inline-block;margin-top:10px;background:var(--pri);color:#fff;border:0;border-radius:10px;padding:8px 14px;font-weight:700;cursor:pointer;text-decoration:none}.opt.b .btn{background:var(--b)}
+.pill{display:inline-block;padding:2px 9px;border-radius:99px;font-size:.8rem;font-weight:700}.pill.a{background:#dbeafe;color:var(--a)}.pill.b{background:#ede9fe;color:var(--b)}.pill.s{background:#dcfce7;color:#166534}.pill.x{background:#fee2e2;color:#991b1b}
+.fl{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.fl .t{font-size:1.4rem;font-weight:800}.fl .ar{flex:1;min-width:40px;border-top:2px dashed #94a3b8;position:relative}
+ul.pc{margin:6px 0;padding-inline-start:20px}ul.pc li{margin:3px 0}
+footer{text-align:center;color:var(--mut);font-size:.85rem;padding:20px}
+@media(max-width:600px){.map{height:320px}td,th{font-size:.85rem;padding:6px 5px}.tl b.d{display:block}}
+</style></head><body>
+<header><h1>🏔️ סקי 2027 · משפחת רוזנר</h1><p>שתי אפשרויות פעילות לאותם תאריכים: <b>A · Madonna di Campiglio (Hotel Fortini)</b> מול <b>B · Breuil-Cervinia (HelloCHALET)</b></p>
+<div class="chips"><span class="chip">📅 א׳ 7.2 – ו׳ 12.2.2027 · 5 לילות</span><span class="chip">👨‍👩‍👧‍👦 6 נפשות</span><span class="chip">✈️ LY381 / LY382 · מלפנסה</span><span class="chip">⏳ לחופשה: <span id="cd"></span></span><span class="chip">🧭 להחלטה (7.1): <span id="cdd"></span></span></div></header>
+<nav id="tabs"></nav><main>
+
+<!-- ============ OVERVIEW ============ -->
+<section class="top" id="ov" data-t="🏠 סקירה והחלטה">
+<div class="card warn" style="margin-bottom:14px">⚖️ <b>שתי הזמנות לינה פעילות לאותם תאריכים – צריך לבטל אחת.</b> ההחלטה נדרשת קודם על צ׳רביניה: Booking יחייב €3,598 ב-<b>5.1.2027</b> וביטול חינם עד <b>7.1.2027 23:59</b>. פורטיני גמיש עד ~2.2.2027. תזכורת להחלטה: <b>3.1.2027</b>.</div>
+<div class="grid">
+<div class="card opt"><span class="pill a">אפשרות A</span><h3 style="margin-top:6px">🏨 Hotel Fortini · Madonna di Campiglio</h3><div class="k">€3,784.14</div>2 חדרים · ארוחת בוקר כלולה<br>40 מ׳ מ-Fortini Express · Skiarea ~155 ק״מ<br>אישור Booking: <b>6480885121</b><br><span class="mut">ביטול חינם עד ~2.2.2027 · מלפנסה ~264 ק״מ (~3:40 ש׳)</span><br><button class="btn" onclick="go('optA')">לכל הפרטים ←</button></div>
+<div class="card opt b"><span class="pill b">אפשרות B</span><h3 style="margin-top:6px">🏠 HelloCHALET · Breuil-Cervinia</h3><div class="k">€3,658</div>דירת חדר שינה + סלון · ללא ארוחות<br>Ski-in/ski-out · 157 ק״מ (352 עם צרמט)<br>אישור Booking: <b>6969036688</b><br><span class="mut">ביטול חינם עד 7.1.2027 23:59 · מלפנסה ~181 ק״מ (~2:20 ש׳)</span><br><button class="btn" onclick="go('optB')">לכל הפרטים ←</button></div>
+<div class="card"><h3>👨‍👩‍👧‍👦 המשפחה</h3>אילון ושרון, יהלי (21), מאיה (18), עמרי (15), בר (11)<br>כולם ברמה בינונית (כחול/אדום)<br>🏂 בר רוצה ללמוד סנובורד</div>
+<div class="card"><h3>✈️ טיסות אל על · XBFIJ2</h3><b>הלוך:</b> LY381 · א׳ 7.2 · TLV 06:25 → MXP 09:45<br><b>חזור:</b> LY382 · ו׳ 12.2 · MXP 09:45 → TLV 14:35<br>6 נוסעים · אקונומי קלאסיק · מזוודה לכל אחד<br><span class="mut">ביטול עצמי בפורטל הצוות עד ~31.1 06:25 (בטוח: 30.1)</span><br><button class="btn" onclick="go('fly')">לטיסות ←</button></div>
+<div class="card"><h3>🚗 רכב · 750909865</h3>Italy Car Rent · VW T-Roc אוטומטית + שרשראות<br>מלפנסה, 7.2 11:30 → 12.2 11:30<br>$227.71 כולל הגנה מלאה<br><b style="color:var(--red)">⚠️ שעת ההחזרה (11:30) מאוחרת מהטיסה (09:45) – צריך לשנות</b><br><button class="btn" onclick="go('car')">לרכב ולוגיסטיקה ←</button></div>
+</div>
+
+<h2 style="margin-top:22px">📋 כל ההזמנות</h2>
+<div class="card tw"><table>
+<tr><th>מה</th><th>אישור</th><th>תאריכים</th><th>סכום</th><th>ביטול חינם עד</th><th>סטטוס</th></tr>
+<tr><td>✈️ טיסות אל על LY381/LY382 (6 נוסעים)</td><td>XBFIJ2</td><td>7.2 / 12.2.2027</td><td>כרטיסי הטבת צוות</td><td>~31.1.2027 06:25 (בטוח: 30.1)</td><td><span class="pill s">פעיל</span></td></tr>
+<tr><td>🏨 Hotel Fortini (A)</td><td>6480885121</td><td>7–12.2.2027</td><td>€3,784.14</td><td>~2.2.2027</td><td><span class="pill a">פעיל · להחלטה</span></td></tr>
+<tr><td>🏠 HelloCHALET Cervinia (B)</td><td>6969036688</td><td>7–12.2.2027</td><td>€3,658 (€0 עד 5.1)</td><td>7.1.2027 23:59</td><td><span class="pill b">פעיל · להחלטה</span></td></tr>
+<tr><td>🚗 Italy Car Rent · VW T-Roc</td><td>750909865</td><td>7.2 11:30 – 12.2 11:30</td><td>$227.71</td><td>לפני 5.2.2027 (~12:29 שעון ישראל)</td><td><span class="pill s">פעיל</span> <span class="pill x">שעת החזרה לשינוי</span></td></tr>
+<tr class="mut"><td>HelloCHALET (מרץ, טעות)</td><td>6100201391</td><td>7–12.3.2027</td><td>—</td><td>—</td><td><span class="pill x">בוטל בחינם</span></td></tr>
+<tr class="mut"><td>רכב (מרץ, טעות)</td><td>762317234</td><td>מרץ 2027</td><td>החזר ₪649.66</td><td>—</td><td><span class="pill x">בוטל</span></td></tr>
+</table><p class="mut">אין הזמנות פעילות במרץ 2027.</p></div>
+
+<h2 style="margin-top:22px">🗓️ ציר זמן להחלטה</h2>
+<ul class="tl" id="tl">
+<li class="p" data-d="2027-01-03"><b class="d">3.1.2027</b> 🔔 תזכורת: החלטה פורטיני מול צ׳רביניה</li>
+<li data-d="2027-01-05"><b class="d">5.1.2027</b> <span class="pill b">B</span> Booking מחייב <b>€3,598</b> אוטומטית ל-Mastercard ••8135</li>
+<li class="r" data-d="2027-01-07"><b class="d">7.1.2027 23:59</b> <span class="pill b">B</span> <b>מועד אחרון לביטול חינם של צ׳רביניה</b> (מ-8.1 ביטול עולה כ-US$3,742) <span class="mut" id="cdc"></span></li>
+<li class="p" data-d="2027-01-24"><b class="d">24.1.2027</b> 🔔 תזכורת: מועד ביטול הטיסות מתקרב</li>
+<li class="p" data-d="2027-01-29"><b class="d">29.1.2027</b> 🔔 תזכורת אחרונה לפני מועד ביטול הטיסות</li>
+<li class="r" data-d="2027-01-30"><b class="d">30.1.2027</b> ✈️ <b>מועד בטוח לביטול עצמי של הטיסות</b> (בפועל עד ~31.1 06:25 שעון ישראל – 7 ימים לפני ההמראה). אחרי זה רק דרך וואטסאפ, החזר מסים בשובר בלבד וללא החזר נקודות</li>
+<li data-d="2027-01-31"><b class="d">~31.1.2027</b> <span class="pill b">B</span> הנכס גובה פיקדון נזקים <b>€500</b> (מוחזר) – רק אם נשארים בצ׳רביניה</li>
+<li class="r" data-d="2027-02-02"><b class="d">~2.2.2027</b> <span class="pill a">A</span> מועד אחרון לביטול חינם של Fortini</li>
+<li class="o" data-d="2027-02-05"><b class="d">5.2.2027 ~12:29</b> 🚗 מועד אחרון לביטול חינם של הרכב (05:29 שעון אינדיאנפוליס)</li>
+<li class="g" data-d="2027-02-07"><b class="d">7.2.2027</b> ✈️ LY381 06:25 → נחיתה במלפנסה 09:45 · 🚗 איסוף רכב 11:30 · צ׳ק-אין (B: 16:00–20:00)</li>
+<li class="g" data-d="2027-02-12"><b class="d">12.2.2027</b> 🚗 החזרת רכב (צריך עד ~07:00 – ראו לשונית רכב) · ✈️ LY382 09:45 → TLV 14:35</li>
+</ul>
+</section>
+
+<!-- ============ FLIGHTS ============ -->
+<section class="top" id="fly" data-t="✈️ טיסות">
+<div class="grid">
+<div class="card"><h3>🧾 ההזמנה</h3>אל על · קוד הזמנה <b>XBFIJ2</b><br>6 נוסעים, כולם באותן טיסות<br>אקונומי קלאסיק · מזוודה רשומה אחת לכל נוסע<br>כרטיסי הטבת צוות (El Al staff)<br>כרטיס של אילון: <b>1142496552302</b></div>
+<div class="card"><h3>🛫 הלוך · LY381 · א׳ 7.2.2027</h3><div class="fl"><div><div class="t">06:25</div>TLV · נתב״ג T3</div><div class="ar"></div><div class="mut">4:20 ש׳</div><div class="ar"></div><div><div class="t">09:45</div>MXP · מלפנסה T1</div></div><p class="mut">מושב אילון: 27A · איסוף הרכב 11:30 – כשעה וחצי אחרי הנחיתה ✔️</p></div>
+<div class="card"><h3>🛬 חזור · LY382 · ו׳ 12.2.2027</h3><div class="fl"><div><div class="t">09:45</div>MXP · מלפנסה T1</div><div class="ar"></div><div class="mut">3:50 ש׳</div><div class="ar"></div><div><div class="t">14:35</div>TLV · נתב״ג T3</div></div><p class="mut">מושב אילון: 41K · <b style="color:var(--red)">הרכב רשום להחזרה ב-11:30 – צריך להקדים</b></p></div>
+</div>
+<h2 style="margin-top:20px">↩️ מדיניות ביטול (טבלת הטבות צוות אל על)</h2>
+<div class="grid">
+<div class="card ok"><h3>מהרכישה ועד 7 ימים לפני הטיסה</h3>• ביטול עצמי בפורטל הצוות (אזור כרטיסי צוות)<br>• מסים ואגרות מוחזרים בכסף/שובר<br>• הנקודות מוחזרות (תוך כשעתיים)<br><b>מועד: עד ~31.1.2027 06:25 שעון ישראל · בטוח: 30.1.2027</b></div>
+<div class="card bad"><h3>בתוך 7 ימים לפני הטיסה</h3>• אי אפשר לבטל לבד – רק דרך שירותי נסיעות צוות בוואטסאפ<br>• מסים מוחזרים כשובר בלבד<br>• <b>ללא החזר נקודות</b></div>
+<div class="card"><h3>🔔 תזכורות</h3>• 3.1.2027 – החלטה על המלון<br>• 24.1.2027 – מועד ביטול הטיסות מתקרב<br>• 29.1.2027 – תזכורת אחרונה לפני מועד ביטול הטיסות</div>
+</div>
+</section>
+
+<!-- ============ OPTION A ============ -->
+<section class="top" id="optA" data-t="🅰️ מדונה די קמפיליו">
+<div class="subnav"></div>
+<div class="sub" id="a-ov" data-t="סקירה">
+<div class="grid">
+<div class="card"><h3>🏨 המלון</h3><b>Hotel Fortini</b><br>Via Cima Tosa 25, Campo Carlo Magno<br>ציון Booking: <b>8.7</b> (972 ביקורות) · מיקום <b>9.1</b><br><a href="https://www.booking.com/hotel/it/fortini.html" target="_blank">דף המלון ב-Booking</a></div>
+<div class="card"><h3>🧾 ההזמנה · 6480885121</h3>7–12.2.2027 · 5 לילות<br>חדר לארבעה + חדר זוגי/טווין · ארוחת בוקר כלולה<br>סה״כ <b>€3,784.14</b> (כולל ~€50 מס עיר שמשולם במלון)<br><span class="mut">ביטול חינם עד ~2.2.2027</span></div>
+<div class="card"><h3>🚡 מעליות קרובות (לפי Booking)</h3><table><tr><td>Fortini Express</td><td><b>40 מ׳</b></td></tr><tr><td>Grostè 1 Express (גונדולה)</td><td>250 מ׳</td></tr><tr><td>Pradalago Express</td><td>1.4 ק״מ</td></tr></table></div>
+<div class="card"><h3>🚗 ממלפנסה</h3>~264 ק״מ · ~3:40 ש׳ (OSRM, ללא פקקים ושלג)<br><span class="mut">ורונה הייתה קרובה יותר (~2.5 ש׳), אבל הטיסות והרכב במלפנסה.</span><br><a href="https://www.google.com/maps/dir/Milano+Malpensa+Airport/Hotel+Fortini+Madonna+di+Campiglio" target="_blank">מסלול בגוגל מפות</a></div>
+</div>
+<h2 style="margin-top:22px">🗺️ מפה</h2><div id="mapA" class="map"></div>
+<p class="src">⚠️ המיקומים על המפה משוערים (לפי מיקום כללי, לא כתובות מדויקות), למעט האזור הכללי של המלון. מפה: © OpenStreetMap.</p>
+</div>
+
+<div class="sub" id="a-ski" data-t="אזור הסקי">
+<div class="grid">
+<div class="card"><div class="k">155–156 ק״מ</div>מסלולים מחוברים<div class="src">ski.it / campigliodolomiti.it</div></div>
+<div class="card"><div class="k">58–59</div>מעליות · 104–108 מסלולים · 4 סנופארקים</div>
+<div class="card"><div class="k">852–2,504 מ׳</div>טווח גובה (הפרש 1,652 מ׳)<div class="src">skiresort.info</div></div>
+<div class="card"><div class="k">95%</div>מהמסלולים עם שלג מלאכותי<div class="src">campigliodolomiti.it</div></div>
+</div>
+<div class="grid" style="margin-top:14px">
+<div class="card"><h3>חלוקה לפי צבע</h3><canvas id="pieA" height="200"></canvas><div class="src">skiresort.info: כחול 50 ק״מ (32%), אדום 72 ק״מ (47%), שחור 33 ק״מ (21%)</div></div>
+<div class="card"><h3>3 אזורים, סקיפס אחד</h3>Madonna di Campiglio מחוברת בסקי ל-<b>Pinzolo</b> (ואל רנדנה) ול-<b>Folgarida-Marilleva</b> (ואל די סולה). הסקיפס של Skiarea כולל גם את Pejo (לא מחובר בסקי).<p class="mut">חסרונות לפי skiresort.info: חלק מהחניות בתשלום, אין מסלולי עמק ל-Pinzolo, Daolasa ו-Marilleva 900.</p><div class="src"><a href="https://www.skiresort.com/en/ski-resort/madonna-di-campiglio-pinzolo-folgarida-marilleva/test-result/summary/" target="_blank">skiresort summary</a></div></div>
+</div>
+<h2 style="margin-top:20px">🗺️ מפת המסלולים</h2>
+<div class="card pm"><img src="assets/campiglio/piste-map.jpg" alt="מפת מסלולים" onclick="lb(this,1)"><div class="src">לחצו להגדלה. מקור: <a href="https://www.skiresort.com/en/ski-resort/madonna-di-campiglio-pinzolo-folgarida-marilleva/trail-map/" target="_blank">skiresort.info trail map</a> · מפה חיה: <a href="https://www.ski.it/en/info-live/slopes" target="_blank">ski.it</a></div></div>
+<h2>⛷️ מסלולים מומלצים למשפחה (כחול/אדום)</h2>
+<p class="mut">הנתונים (אורך/הפרש גובה) מתוך רשימת המסלולים הרשמית ב-<a href="https://www.ski.it/en/info-live/slopes" target="_blank">ski.it</a>. הבחירה היא המלצה לפי צבע ומיקום; כדאי לאמת על המפה.</p>
+<div class="card tw"><table><tr><th>מסלול</th><th>צבע</th><th>אורך</th><th>הפרש</th><th>הערה</th></tr>
+<tr><td>Malga Zeledria – Fortini</td><td><span class="dot" style="background:var(--blue)"></span>כחול</td><td>1,360 מ׳</td><td>147 מ׳</td><td>מסתיים ליד המלון – חימום מושלם</td></tr>
+<tr><td>Pradalago easy</td><td><span class="dot" style="background:var(--blue)"></span>כחול</td><td>3,740 מ׳</td><td>460 מ׳</td><td>ארוך ונוף לברנטה (skiresort ממליץ)</td></tr>
+<tr><td>Zeledria</td><td><span class="dot" style="background:var(--blue)"></span>כחול</td><td>1,310 מ׳</td><td>165 מ׳</td><td>אזור Campo Carlo Magno</td></tr>
+<tr><td>Skiweg Campiglio</td><td><span class="dot" style="background:var(--blue)"></span>כחול</td><td>2,200 מ׳</td><td>240 מ׳</td><td>חיבור לכפר</td></tr>
+<tr><td>Belvedere</td><td><span class="dot" style="background:var(--blue)"></span>כחול</td><td>1,160 מ׳</td><td>195 מ׳</td><td></td></tr>
+<tr><td>Nube d'argento</td><td><span class="dot" style="background:var(--blue)"></span>כחול</td><td>1,280 מ׳</td><td>200 מ׳</td><td></td></tr>
+<tr><td>Genziana</td><td><span class="dot" style="background:var(--red)"></span>אדום</td><td>1,780 מ׳</td><td>360 מ׳</td><td></td></tr>
+<tr><td>Fiocco di neve</td><td><span class="dot" style="background:var(--red)"></span>אדום</td><td>1,480 מ׳</td><td>230 מ׳</td><td></td></tr>
+<tr><td>Rododendro (Pinzolo)</td><td><span class="dot" style="background:var(--red)"></span>אדום</td><td>3,100 מ׳</td><td>600 מ׳</td><td>יום טיול לפינצולו</td></tr>
+</table><p class="mut">🖤 לא למשפחה ברמה בינונית: 3-Tre / Canalone Miramonti (מסלול גביע העולם), Spinale direttissima (שחור, 2,400 מ׳), Amazzonia (שחור).</p></div>
+<h2>🎟️ מחירי סקיפס 2026/27 (Skiarea, מחירון רשמי)</h2>
+<div class="card warn">התאריכים 7–12.2 נופלים כנראה על <b>מעבר עונות</b>: לפי המחירון, 7.1–6.2.2027 הוא "עונה נמוכה", ואחרי 6.2 מתחילה עונה גבוהה יותר. לא הצלחתי לקרוא בוודאות את גבולות העונה הגבוהה בפברואר – בדקו במחירון.</div>
+<div class="card tw" style="margin-top:10px"><table><tr><th>תעריף</th><th>מבוגר</th><th>ג׳וניור</th><th>ילד</th></tr>
+<tr><td>יום 1 · נמוכה</td><td>€75</td><td>€53</td><td>€38</td></tr>
+<tr><td>יום 1 · גבוהה</td><td>€87</td><td>€61</td><td>€44</td></tr>
+<tr><td>5 ימים · נמוכה</td><td>€331</td><td>€232</td><td>€166</td></tr>
+<tr><td>5 ימים · גבוהה</td><td>€383</td><td>€268</td><td>€192</td></tr></table>
+<p class="mut">גבולות הגיל לג׳וניור/ילד והנחות משפחתיות: לא אומתו – מופיעים במחירון. המחיר הזול ביותר לרוב באונליין. 💡 עם טיסה חזרה ב-12.2 בבוקר יוצאים 4 ימי סקי מלאים (8–11.2), כך שכנראה מספיק פס של 4 ימים (מחיר 4 ימים לא מופיע כאן – לבדוק במחירון).</p>
+<div class="src"><a href="https://www.ski.it/ski/documenti-file/skipass/listini/2026-2027ListinoSkiareaIT.pdf" target="_blank">מחירון 2026/27 (PDF, ski.it)</a></div></div>
+<h2>🏂 סנופארק בשביל בר</h2>
+<div class="card"><b>Ursus Snowpark – Grostè</b>: לפי האתר הרשמי "the Alps' best terrain park". נמצא בחלק העליון של הגרוסטה, עם מכשולים לכל הרמות (boxes, rails, jumps). למתחילה בסנובורד – עדיף קודם השיעורים בשטח התרגול באמצע הגרוסטה ורק אחר כך הפארק.<div class="src">campigliodolomiti.it · checkyeti (Zebra)</div></div>
+</div>
+
+<div class="sub" id="a-sch" data-t="בתי ספר">
+<p class="mut">שני בתי הספר שאומתו הם בקרבת המלון/הגרוסטה. יש בעיירה עוד בתי ספר – רשימה מלאה באתר התיירות.</p>
+<details open><summary>🏫 Scuola Italiana Sci Campo Carlo Magno (CCM)</summary><div>
+📍 Via Zeledria 8, Campo Carlo Magno · ☎ +39 0465 443222 · <a href="https://www.scuolasciccm.it/en/snowboard/kids-and-adults-lessons" target="_blank">scuolasciccm.it</a><br>
+• כ-60 מדריכים, קורסים קבוצתיים ופרטיים לכל הרמות.<br>
+• <b>סנובורד מתחילים לילדים:</b> 11:00–12:50, עד 6 תלמידים, מינימום 3 ימים, <b>מתחיל בראשון או שני</b>.<br>
+• קבוצות סנובורד לגילאי 8+ · מציעים גם השכרה (CCM Rent).<br>• מחיר: לא מצאתי מחיר מפורסם – לשאול.
+<div class="src"><a href="https://www.campigliodolomiti.it/en/services/scuola-di-sci-campo-carlo-magno" target="_blank">campigliodolomiti.it</a></div></div></details>
+<details><summary>🦓 Scuola di Snowboard Zebra</summary><div>
+• קבוצות סנובורד לילדים מגיל 8 ומבוגרים, ראשון/שני, 11:00, 3–6 ימים.<br>• מפגש: Rifugio Boch בתחנת האמצע של הגרוסטה; מתחילים לומדים בשטח מסודר שם ואז מסלולים כחולים.<br>• <b>מחיר: €170–€270 לאדם</b> (לפי checkyeti, עונת 2026/27).<br>• השכרה ב-Zebra Shop. צריך סקיפס מהיום הראשון.
+<div class="src"><a href="https://www.checkyeti.com/en/d/2973/23389" target="_blank">checkyeti</a></div></div></details>
+<details><summary>💡 המלצה לבר</summary><div>ההגעה למלון ב-7.2 אחה״צ (נחיתה 09:45 + ~3:40 נסיעה), כך שהקורס יתחיל כנראה ביום שני 8.2 – לבדוק שזה אפשרי. קורס קבוצתי 3–4 ימים; שיעור פרטי ביום הראשון יכול לזרז. המשפחה גולשת בבוקר באזור הגרוסטה ונפגשת לצהריים ב-Boch.</div></details>
+</div>
+
+<div class="sub" id="a-food" data-t="מסעדות">
+<div class="flt" id="ff"><button class="on" data-f="all">הכל</button><button data-f="slope">על המסלול</button><button data-f="town">בעיירה</button><button data-f="fine">גורמה</button><button data-f="casual">קז׳ואל</button></div>
+<div class="grid" id="flA"></div>
+<p class="src">מקורות: <a href="https://www.scattidigusto.it/madonna-di-campiglio-i-migliori-ristoranti" target="_blank">Scatti di Gusto (2023, עודכן 2024)</a> · <a href="https://graffer.com/Ristorante" target="_blank">graffer.com</a> · <a href="https://www.stoppanidolomiteslodge.it/ristorante-madonna-di-campiglio" target="_blank">Stoppani</a> · <a href="https://www.campigliodolomiti.it/it/servizi/boch" target="_blank">campigliodolomiti.it</a>. מחירים מ-2023 – כנראה עלו.</p>
+</div>
+
+<div class="sub" id="a-rev" data-t="ביקורות">
+<div class="grid">
+<div class="card"><div class="k">8.7</div>Booking · 972 ביקורות<br>מיקום 9.1</div>
+<div class="card"><div class="k">4.7/5</div>אזור הסקי · skiresort.info ("World-class")</div>
+<div class="card"><div class="k">8.6/10</div>skiweather.eu · משפחות 8.4</div>
+</div>
+<h3>על Fortini (Booking)</h3><div class="grid">
+<div class="card q"><blockquote>"Fantastic location ski in ski out, staff very helpful… Easy access to lifts"</blockquote><div class="mut">Lynda · אוסטרליה · מרץ 2026</div></div>
+<div class="card q"><blockquote>"The position of the Hotel is perfect, ski to door Hotel. Second year at this Hotel"</blockquote><div class="mut">Goran · גרמניה</div></div>
+<div class="card q"><blockquote>"Great location next to the ski lift. Modern and comfortable rooms"</blockquote><div class="mut">Malcolm · איטליה</div></div>
+<div class="card q"><blockquote>"Great location next to the telecabine, amazing breakfast"</blockquote><div class="mut">Kevin · בריטניה · ספט׳ 2026</div></div>
+<div class="card q con"><blockquote>"A bit noisy in the evening if your room is above the bar"</blockquote><div class="mut">Kevin · בריטניה · חיסרון</div></div>
+<div class="card q con"><blockquote>"right by a ski lift and main road"</blockquote><div class="mut">Berkshireboy · בריטניה</div></div>
+</div>
+<h3>על אזור הסקי</h3><div class="card">skiresort.info – יתרונות: אזור הסקי הגדול בטרנטינו, טיפוח מסלולים מושלם, מגוון, נופי ברנטה, סנופארק מהשורה הראשונה, צוות ידידותי. חסרונות: חניה בתשלום בחלק מהמקומות, אין מסלולי עמק לחלק מהכפרים.<div class="src"><a href="https://www.skiresort.com/en/ski-resort/madonna-di-campiglio-pinzolo-folgarida-marilleva/test-result/summary/" target="_blank">skiresort</a> · <a href="https://skiweather.eu/profile/madonna-di-campiglio/704" target="_blank">skiweather.eu</a> · TripAdvisor: לא נבדק</div></div>
+</div>
+
+<div class="sub" id="a-wx" data-t="מזג אוויר">
+<div class="grid">
+<div class="card"><div class="k">~1°C</div>ממוצע מקסימום בפברואר (בעיירה)</div>
+<div class="card"><div class="k">-7.5 עד -10°C</div>ממוצע מינימום בלילה</div>
+<div class="card"><div class="k">13–15</div>ימי שלג בפברואר</div>
+<div class="card"><div class="k">~185 שעות</div>שמש בחודש (weatherapi)</div>
+</div>
+<div class="card" style="margin-top:14px"><h3>השוואת מקורות – פברואר, אזור העיירה (~1,520 מ׳)</h3><canvas id="wxc" height="120"></canvas></div>
+<div class="card warn" style="margin-top:12px">❓ <b>לא נמצאו:</b> נתוני אקלים אמינים לפסגות (~2,500 מ׳) ועומק שלג טיפוסי בפברואר. כלל אצבע (לא נתון מקומי): טמפ׳ יורדת בכ-0.6°C לכל 100 מ׳, כך שבגרוסטה צפוי קר בכמה מעלות מהעיירה. מצב שלג חי: <a href="https://www.ski.it/en/info-live/slopes" target="_blank">ski.it</a>. כמויות השלג שונות מאוד בין המקורות (54 ס״מ לעומת 335 מ״מ שלג מצטבר).</div>
+<p class="src"><a href="https://www.weatherapi.com/history/february/q/madonna-di-campiglio-1279634" target="_blank">weatherapi</a> · <a href="https://www.weather-atlas.com/en/italy/madonna-di-campiglio-weather-february" target="_blank">weather-atlas</a> · <a href="https://www.easeweather.com/europe/italy/trentino-alto-adige/provincia-autonoma-di-trento/madonna-di-campiglio/february" target="_blank">easeweather</a> · <a href="https://weather-and-climate.com/madonna-di-campiglio-February-averages" target="_blank">weather-and-climate</a> (נתונים מטרנטו!)</p>
+</div>
+
+<div class="sub" id="a-pr" data-t="מעשי">
+<div class="grid">
+<div class="card"><h3>🚗 נסיעה</h3>ממלפנסה (שם הטיסות והרכב): ~264 ק״מ, ~3:40 ש׳ ללא פקקים ושלג (OSRM).<br>לידיעה – מהדשבורד המקורי: ורונה כ-2.5 ש׳ (A22 צפונה לטרנטו, ואל רנדנה/פינצולו); ברגמו ~2.5–3 ש׳; אינסברוק ~3 ש׳.<p class="mut">Campo Carlo Magno נמצא כ-2 ק״מ מעל העיירה. הרכב מגיע עם שרשראות.</p><a href="https://www.google.com/maps/dir/Milano+Malpensa+Airport/Hotel+Fortini+Madonna+di+Campiglio" target="_blank">מסלול ממלפנסה</a></div>
+<div class="card"><h3>🅿️ במלון</h3>• חניה €10 ליום<br>• אחסון סקי במקום<br>• השכרת ציוד ובית ספר לסקי בסמוך<br>• ~2 ק״מ למרכז (2 דק׳ ברכב / 10–20 דק׳ הליכה), יש שאטל<div class="src">Booking</div></div>
+<div class="card"><h3>📞 חשוב</h3>• חירום: 112<br>• מצב מעליות: <a href="https://www.ski.it/en/info-live/lift-status" target="_blank">ski.it</a><br>• ביטול חינם עד ~2.2.2027<br>• לרשום שם אורח בחדר לארבעה<br>• מס עיר (~€50) וחניה – לשלם במלון</div>
+</div>
+</div>
+</section>
+
+<!-- ============ OPTION B ============ -->
+<section class="top" id="optB" data-t="🅱️ צ׳רביניה">
+<div class="subnav"></div>
+<div class="sub" id="b-ov" data-t="סקירה">
+<div class="card ok" style="margin-bottom:14px">🔁 ההזמנה של מרץ (6100201391) בוטלה בחינם; ההזמנה הפעילה היא לאותה דירה ב-<b>7–12.2.2027</b>, ל-6 אורחים – באותם תאריכים כמו Fortini.</div>
+<div class="grid">
+<div class="card"><h3>🏠 הדירה</h3><b>HelloCHALET – Front Row with balcony overlooking the Cretaz slopes</b><br>Via J. B. Bich 16, 11021 Breuil-Cervinia<br>ציון Booking: <b>10</b> (2 ביקורות בלבד)<br>☎ <a href="tel:+393276114775">+39 327 611 4775</a> · מנוהל ע״י HelloCHALET<br><a href="https://www.booking.com/hotel/it/hellochalet-front-row-with-balcony-overlooking-the-cretaz-slopes.en-us.html" target="_blank">דף הנכס ב-Booking</a></div>
+<div class="card"><h3>🧾 ההזמנה · 6969036688</h3>One-Bedroom Apartment with Balcony · ללא ארוחות<br>6 אורחים (4 מבוגרים + 2 ילדים)<br>סה״כ <b>€3,658</b> (כ-US$4,089, כולל מע״מ, דמי שירות €250 ומס עיר)<br>היום: <b>€0</b> · Booking יחייב <b>€3,598</b> אוטומטית ב-5.1.2027 (Mastercard ••8135)<br><span class="mut">ביטול חינם עד 7.1.2027 23:59 · פיקדון €500 מוחזר נגבה 7 ימים לפני ההגעה</span></div>
+<div class="card"><h3>🕓 צ׳ק-אין / צ׳ק-אאוט</h3>צ׳ק-אין: א׳ 7.2.2027, <b>16:00–20:00</b><br><span class="mut">הגעה 20:00–01:00 – בתוספת תשלום</span><br>צ׳ק-אאוט: ו׳ 12.2.2027, <b>08:00–10:00</b> – <b style="color:var(--red)">אבל צריך לצאת בסביבות 04:30 לטיסה; לתאם יציאה מוקדמת/השארת מפתח</b><br>בצ׳ק-אין: תעודה מזהה + כרטיס אשראי</div>
+<div class="card"><h3>🚗 ממלפנסה</h3>~181 ק״מ · ~2:20 ש׳ (OSRM)<br>נחיתה 09:45 → רכב 11:30 → הגעה משוערת ~14:00, לפני הצ׳ק-אין (16:00). זמן לקניות בדרך.<br><a href="https://www.google.com/maps/dir/Milano+Malpensa+Airport/Via+J.+B.+Bich+16+Breuil-Cervinia" target="_blank">מסלול ממלפנסה</a></div>
+</div>
+<h2 style="margin-top:22px">📸 תמונות</h2>
+<div class="gal"><img src="assets/cervinia/photo1.jpg" alt="" onclick="lb(this)"><img src="assets/cervinia/photo2.jpg" alt="" onclick="lb(this)"><img src="assets/cervinia/photo3.jpg" alt="" onclick="lb(this)"><img src="assets/cervinia/photo4.jpg" alt="" onclick="lb(this)"></div>
+<p class="src">תמונות: Booking.com</p>
+</div>
+
+<div class="sub" id="b-cost" data-t="עלויות">
+<h2>💶 פירוט עלות (לפי Booking, בדולרים, משוער)</h2>
+<div class="grid"><div class="card"><table>
+<tr><td>דירה (5 לילות)</td><td>~$3,403</td></tr>
+<tr><td>מע״מ 10%</td><td>~$340</td></tr>
+<tr><td>דמי שירות €250</td><td>~$279</td></tr>
+<tr><td>מס עיר</td><td>~$67</td></tr>
+<tr><th>סה״כ</th><th>~$4,089 = <b>€3,658</b></th></tr>
+<tr><td>חיוב Booking ב-5.1.2027</td><td>€3,598</td></tr>
+<tr><td>פיקדון נזקים (מוחזר), ~31.1</td><td>€500</td></tr>
+</table><p class="mut">כ-€732 ללילה · כ-€610 לאדם (6 נפשות). שורת "דירה" מחושבת כיתרה (סה״כ פחות מסים ודמי שירות). ההפרש של €60 בין הסה״כ לחיוב כנראה משולם בנכס (מס עיר?) – לא אומת. כלולים: מצעים וניקיון סופי. חניה פרטית – בתוספת.</p>
+<p class="mut">💡 החיוב (5.1) קורה יומיים לפני סוף הביטול החינמי (7.1) – ביטול עד 7.1 אמור להיות חינם גם אחרי החיוב (לפי תנאי Booking).</p></div>
+<div class="card"><h3>חלוקה</h3><canvas id="pieB" height="200"></canvas></div></div>
+</div>
+
+<div class="sub" id="b-ap" data-t="הדירה">
+<div class="grid">
+<div class="card"><h3>🛏️ מיטות</h3><table>
+<tr><td>חדר שינה</td><td>מיטת קינג 1</td><td>2</td></tr>
+<tr><td>חדר שינה</td><td>מיטת קומותיים 1</td><td>2</td></tr>
+<tr><td>סלון</td><td>ספה נפתחת 1</td><td>2</td></tr>
+<tr><th colspan="2">קיבולת מקסימלית</th><th>6</th></tr></table>
+<p class="mut">אין מיטות נוספות · עריסה €70. לפי Booking הקינג והקומותיים מופיעים יחד בחדר השינה – כדאי לוודא את החלוקה.</p></div>
+<div class="card"><h3>📐 מפרט</h3>• 517 רגל² (~48 מ״ר) · חדר רחצה <b>אחד</b> ל-6 נפשות<br>• מרפסת עם נוף להר/למטרהורן ולמסלולי Cretaz<br>• מטבח מלא, מדיח, מכונת כביסה<br>• Wi-Fi חינם · מצעים וניקיון סופי כלולים</div>
+<div class="card"><h3>🎿 שירותים</h3>• השכרת ציוד סקי<br>• מסעדה/בר<br>• חניה פרטית בגראז׳ בתשלום, כ-500 מ׳ מהדירה<br>• ❌ אין בריכה/ספא<br>• ❌ ללא ארוחות</div>
+</div>
+</div>
+
+<div class="sub" id="b-loc" data-t="מיקום ומעליות">
+<div class="grid">
+<div class="card"><h3>🚡 מעליות (לפי Booking)</h3><table>
+<tr><td>Cretaz</td><td><b>50 רגל (~15 מ׳)</b> · ski-in/ski-out</td></tr>
+<tr><td>Campetto</td><td>20 רגל (~6 מ׳)</td></tr>
+<tr><td>Breuil – Plan Maison</td><td>2,450 רגל (~750 מ׳)</td></tr>
+<tr><td>רכבל Plateau Rosà</td><td>6 דק׳ הליכה</td></tr></table>
+<p class="mut">הדירה במרכז הכפר להולכי רגל.</p>
+<a href="https://www.google.com/maps/search/?api=1&query=Via+J.+B.+Bich+16+Breuil-Cervinia" target="_blank">📍 פתיחה בגוגל מפות</a></div>
+<div class="card"><h3>✈️ נסיעה משדות התעופה</h3><table>
+<tr><td>מילאנו מלפנסה (MXP) ✈️</td><td>~181 ק״מ · ~2:20 ש׳</td></tr>
+<tr><td>מילאנו לינאטה (LIN)</td><td>~195 ק״מ · ~2:40 ש׳</td></tr>
+<tr><td>טורינו (TRN)</td><td>~121 ק״מ · ~1:45 ש׳</td></tr></table>
+<p class="mut">חישוב מסלול OSRM ללא פקקים ושלג. A5 עד יציאת Châtillon-Saint-Vincent ומשם כ-30 ק״מ בעמק. חובה צמיגי חורף או שרשראות ברכב (funivie.it).</p>
+<a href="https://www.google.com/maps/dir/Milano+Malpensa+Airport/Via+J.+B.+Bich+16+Breuil-Cervinia" target="_blank">מסלול ממלפנסה</a> · <a href="https://www.google.com/maps/dir/Milano+Linate+Airport/Via+J.+B.+Bich+16+Breuil-Cervinia" target="_blank">מלינאטה</a></div>
+</div>
+<h2 style="margin-top:22px">🗺️ מפה</h2><div id="mapB" class="map"></div>
+<p class="src">⚠️ המיקומים על המפה משוערים (לפי OpenStreetMap ותיאור Booking, לא נקודות מדויקות). מפה: © OpenStreetMap.</p>
+</div>
+
+<div class="sub" id="b-ski" data-t="אזור הסקי">
+<div class="grid">
+<div class="card"><div class="k">352 ק״מ</div>Matterhorn Ski Paradise: 157 ק״מ צ׳רביניה + ולטורננצ׳ה, 195 ק״מ צרמט<div class="src">lovevda.it (אתר התיירות הרשמי של ואלה ד׳אוסטה)</div></div>
+<div class="card"><div class="k">148</div>מסלולים: 73 בצד האיטלקי + 75 בצרמט<div class="src">lovevda.it</div></div>
+<div class="card"><div class="k">3,883 מ׳</div>Klein Matterhorn – נקודת הסקי הגבוהה באירופה<div class="src">funivie.it</div></div>
+<div class="card"><div class="k">24.10.26–2.5.27</div>עונה רשמית בצ׳רביניה – פברואר באמצע העונה<div class="src">cervinia.it / skimania.it</div></div>
+</div>
+<div class="grid" style="margin-top:14px">
+<div class="card"><h3>חלוקה לפי צבע (צ׳רביניה + ולטורננצ׳ה, ק״מ)</h3><canvas id="pist" height="200"></canvas><div class="src">lovevda.it: כחול 19 מסלולים/39 ק״מ, אדום 45/107 ק״מ, שחור 9/12 ק״מ</div></div>
+<div class="card"><h3>מתאים לבינוניים</h3>הצד האיטלקי רובו אדום וכחול – מתאים בדיוק למשפחה (כחול/אדום). לפי funivie.it הכחולים הארוכים של Plateau Rosà מושלמים לבינוניים, והגלישה מ-Plateau Rosà עד Valtournenche היא מהארוכות באלפים (מעל 20 ק״מ).<p class="mut">💡 יום לצרמט: צריך סקיפס בינלאומי. סקיפס בינלאומי שנקנה באיטליה – הכניסה הראשונה חייבת להיות במעלית איטלקית. לבדוק שעת המעלית האחרונה חזרה לצד האיטלקי.</p><div class="src"><a href="https://funivie.it/it/skipass/cervinia/" target="_blank">funivie.it</a> · <a href="https://cervinia.it/note-e-regolamento-di-biglietteria" target="_blank">תקנון cervinia.it</a></div></div>
+</div>
+<h2 style="margin-top:20px">🎟️ מחירי סקיפס 2026/27 (ימים רצופים)</h2>
+<div class="card ok">אין עונה גבוהה/נמוכה – מחיר אחד לכל העונה (skimania.it). קטגוריות: <b>Young</b> – נולד אחרי 31.10.2002 (יהלי, מאיה), <b>Junior</b> – נולד אחרי 31.10.2010 (עמרי, בר). נדרשת תעודה מזהה.</div>
+<div class="card tw" style="margin-top:10px"><table><tr><th>סקיפס</th><th>מבוגר</th><th>Young</th><th>Junior</th><th>משפחה (2+2+2)</th></tr>
+<tr><td>4 ימים · צ׳רביניה-ולטורננצ׳ה</td><td>€235.50</td><td>€188.50</td><td>€165.00</td><td><b>€1,178</b></td></tr>
+<tr><td>5 ימים · צ׳רביניה-ולטורננצ׳ה</td><td>€288.00</td><td>€230.50</td><td>€201.50</td><td><b>€1,440</b></td></tr>
+<tr><td>6 ימים · צ׳רביניה-ולטורננצ׳ה</td><td>€338.00</td><td>€270.50</td><td>€236.50</td><td><b>€1,690</b></td></tr>
+<tr><td>4 ימים · בינלאומי (+צרמט)</td><td>€324.00</td><td>€259.00</td><td>€226.50</td><td><b>€1,619</b></td></tr>
+<tr><td>5 ימים · בינלאומי (+צרמט)</td><td>€396.00</td><td>€317.00</td><td>€277.00</td><td><b>€1,980</b></td></tr>
+<tr><td>6 ימים · בינלאומי (+צרמט)</td><td>€464.50</td><td>€371.50</td><td>€325.00</td><td><b>€2,322</b></td></tr>
+<tr><td>יום 1 · צ׳רביניה / בינלאומי</td><td>€64 / €88</td><td>€51 / €70.50</td><td>€45 / €61.50</td><td></td></tr></table>
+<p class="mut">💡 הגעה ב-7.2 אחה״צ וטיסה חזרה ב-12.2 ב-09:45 (יציאה לפנות בוקר) – כלומר <b>4 ימי סקי מלאים (8–11.2) ופס של 4 ימים</b> (משפחה: €1,178 איטלקי / €1,619 בינלאומי). אפשרות חסכונית: 4 ימים איטלקי + יום בינלאומי בודד לצרמט (לא נבדק אם אפשר לשדרג פס קיים). פסים איטלקיים של 3–5 ימים כוללים גם יום אחד באתר אחר בואלה ד׳אוסטה.</p>
+<div class="src">מקורות: <a href="https://www.skiwithriky.com/cervinia-ski-pass-prices-2026-2027/" target="_blank">skiwithriky.com</a> (טבלה מלאה) · <a href="https://www.skimania.it/cervinia-skipass-2026-27-a-64-euro-quanto-costa-aggiungere-zermatt-e-quando-conviene-lo-stagionalemi/" target="_blank">skimania.it</a> (מבוגרים, אומת 9.9.2026) · <a href="https://funivie.it/it/skipass/cervinia/" target="_blank">funivie.it</a> · <a href="https://www.lovevda.it/it/banca-dati/5/sci-di-discesa/breuil-cervinia/comprensorio-di-breuil-cervinia-valtournenche-zermatt/2612" target="_blank">lovevda.it</a>. כולם מצטטים את המחירון הרשמי של Cervino S.p.A. – את ה-PDF עצמו לא פתחתי. המחירים לא כוללים ביטוח וכרטיס key-card. התאמת הגילאים לקטגוריות לפי הגילאים הנוכחיים – לוודא לפי תאריכי לידה.</div></div>
+</div>
+
+<div class="sub" id="b-pr" data-t="מעשי">
+<div class="grid">
+<div class="card"><h3>📞 חשוב</h3>• HelloCHALET: <a href="tel:+393276114775">+39 327 611 4775</a><br>• חירום: 112<br>• חיוב €3,598 ב-5.1.2027<br>• ביטול חינם עד 7.1.2027 23:59<br>• פיקדון €500 ~31.1<br>• הגעה אחרי 20:00 – בתוספת תשלום</div>
+<div class="card"><h3>🅿️ חניה</h3>גראז׳ פרטי בתשלום כ-500 מ׳ מהדירה – לשריין מראש.</div>
+<div class="card"><h3>🍳 בלי ארוחות</h3>יש מטבח מלא – כדאי לעשות קניות בדרך מהשדה, לפני העלייה בעמק.</div>
+<div class="card warn"><h3>❓ עוד לא נבדק</h3>מסעדות, בתי ספר לסקי/סנובורד לבר, מזג אוויר וביקורות על האזור – נבדקו רק לקמפיליו.</div>
+</div>
+</div>
+</section>
+
+<!-- ============ COMPARISON ============ -->
+<section class="top" id="cmp" data-t="⚖️ השוואה">
+<p class="mut">שתי ההזמנות פעילות <b>לאותם תאריכים</b> (7–12.2.2027) – צריך לבטל אחת. ירוק = יתרון.</p>
+<div class="card tw"><table class="cmp">
+<tr><th></th><th><span class="pill a">A</span> Hotel Fortini · Madonna di Campiglio</th><th><span class="pill b">B</span> HelloCHALET · Breuil-Cervinia</th></tr>
+<tr><td>אישור Booking</td><td>6480885121</td><td>6969036688</td></tr>
+<tr><td>תאריכים</td><td colspan="2" style="text-align:center">אותם תאריכים: 7–12.2.2027 · 5 לילות · 6 אורחים (4 מבוגרים + 2 ילדים)</td></tr>
+<tr><td>מחיר לינה</td><td>€3,784.14 (כולל בוקר)</td><td class="win">€3,658 (לינה בלבד)</td></tr>
+<tr><td>ללילה / לאדם</td><td>~€757 / ~€631</td><td class="win">~€732 / ~€610</td></tr>
+<tr><td>תשלום</td><td>—</td><td>€0 היום · חיוב €3,598 ב-5.1 · פיקדון €500 מוחזר</td></tr>
+<tr><td>ארוחות</td><td class="win">ארוחת בוקר כלולה</td><td>ללא · מטבח מלא</td></tr>
+<tr><td>חדרים ומיטות</td><td class="win">2 חדרים (לארבעה + זוגי/טווין)</td><td>דירה אחת ~48 מ״ר: קינג + קומותיים + ספה בסלון · חדר רחצה 1</td></tr>
+<tr><td>גישה לסקי</td><td>40 מ׳ מ-Fortini Express</td><td class="win">Ski-in/ski-out, 15 מ׳ מ-Cretaz · במרכז הכפר</td></tr>
+<tr><td>אזור סקי</td><td>~155 ק״מ (Skiarea Campiglio)</td><td class="win">157 ק״מ איטלקי / 352 ק״מ עם צרמט</td></tr>
+<tr><td>גובה</td><td>852–2,504 מ׳</td><td class="win">עד 3,883 מ׳ (Klein Matterhorn)</td></tr>
+<tr><td>כחול/אדום/שחור</td><td class="win">32% / 47% / 21% (יותר כחולים)</td><td>25% / 68% / 8% (בעיקר אדום)</td></tr>
+<tr><td>סקיפס 5 ימים למבוגר</td><td>€331–€383 (לפי עונה)</td><td class="win">€288 איטלקי / €396 בינלאומי</td></tr>
+<tr><td>סקיפס משפחתי 4 ימים</td><td>לא חושב (קטגוריות גיל לא אומתו)</td><td>€1,178 איטלקי / €1,619 בינלאומי</td></tr>
+<tr><td>בר – סנובורד</td><td class="win">2 בתי ספר + Ursus Snowpark נבדקו</td><td>לא נבדק עדיין</td></tr>
+<tr><td>ציון Booking</td><td class="win">8.7 (972 ביקורות)</td><td>10 (2 ביקורות בלבד)</td></tr>
+<tr><td>נסיעה ממלפנסה</td><td>~264 ק״מ · ~3:40 ש׳</td><td class="win">~181 ק״מ · ~2:20 ש׳</td></tr>
+<tr><td>יציאה ב-12.2 (החזרת רכב ~07:00)</td><td>~03:00 לפנות בוקר</td><td class="win">~04:30 לפנות בוקר</td></tr>
+<tr><td>חניה</td><td>€10 ליום במלון</td><td>גראז׳ בתשלום, ~500 מ׳</td></tr>
+<tr><td>ביטול חינם עד</td><td class="win">~2.2.2027</td><td>7.1.2027 23:59</td></tr>
+</table></div>
+<div class="grid" style="margin-top:14px">
+<div class="card opt"><h3><span class="pill a">A</span> קמפיליו – בעד ונגד</h3><b>👍 בעד</b><ul class="pc"><li>ארוחת בוקר לשישה ושני חדרים – יותר פרטיות ונוחות</li><li>מלון מבוסס: 8.7 על 972 ביקורות</li><li>יותר מסלולים כחולים; בתי ספר לסנובורד וסנופארק לבר כבר נבדקו</li><li>ביטול גמיש עד ~2.2</li></ul><b>👎 נגד</b><ul class="pc"><li>יקר בכ-€126 בלינה; סקיפס יקר יותר</li><li>נסיעה ארוכה ממלפנסה (~3:40), יציאה ~03:00 ביום החזרה</li><li>ייתכן רעש מהבר/כביש (ביקורות)</li></ul></div>
+<div class="card opt b"><h3><span class="pill b">B</span> צ׳רביניה – בעד ונגד</h3><b>👍 בעד</b><ul class="pc"><li>Ski-in/ski-out אמיתי במרכז הכפר</li><li>אזור סקי גבוה וגדול יותר, אפשרות ליום בצרמט</li><li>זול יותר בלינה ובסקיפס</li><li>קרוב יותר למלפנסה (~2:20)</li></ul><b>👎 נגד</b><ul class="pc"><li>דירה צפופה לשישה, חדר רחצה אחד, ספה בסלון</li><li>בלי ארוחות</li><li>רק 2 ביקורות</li><li>החלטה מוקדמת: חיוב 5.1, ביטול חינם עד 7.1</li><li>סנובורד לבר ומסעדות – עוד לא נבדקו</li></ul></div>
+</div>
+<div class="card" style="margin-top:14px"><b>סיכום:</b> צ׳רביניה זולה בכ-€126 בלינה, אבל בלי ארוחות; פורטיני כולל ארוחת בוקר לשישה, שני חדרים ופרטיות. צ׳רביניה נותנת ski-in/ski-out אמיתי, אזור סקי גדול וגבוה יותר, סקיפס זול יותר ונסיעה קצרה יותר ממלפנסה, אבל הדירה צפופה לשישה עם חדר רחצה אחד. <b>ההחלטה נדרשת עד 7.1.2027</b> (החיוב ב-5.1); פורטיני גמיש עד ~2.2.</div>
+</section>
+
+<!-- ============ CAR & LOGISTICS ============ -->
+<section class="top" id="car" data-t="🚗 רכב ולוגיסטיקה">
+<div class="card bad" style="margin-bottom:14px">⚠️ <b>צריך לשנות את שעת החזרת הרכב.</b> ההשכרה רשומה להחזרה ב-<b>12.2.2027 11:30</b>, אבל הטיסה LY382 ממריאה ב-<b>09:45</b> – את הרכב צריך להחזיר עד <b>~07:00</b>. הנסיעה למלפנסה לפנות בוקר: מצ׳רביניה ~2:20 ש׳ (יציאה ~04:30), מקמפיליו ~3:40 ש׳ (יציאה ~03:00) – בלי פקקים ושלג. ✔️ האיסוף ב-7.2 ב-11:30 מתאים לנחיתה ב-09:45.</div>
+<div class="grid">
+<div class="card"><h3>🚗 ההזמנה · 750909865</h3>Italy Car Rent · <b>VW T-Roc</b> אוטומטית · כולל שרשראות שלג<br>איסוף בטרמינל, מילאנו מלפנסה<br>א׳ 7.2.2027 11:30 → ו׳ 12.2.2027 11:30 <span class="pill x">שעת החזרה לשינוי</span><br>סה״כ <b>$227.71</b> כולל הגנה מלאה דרך Rentalcover ($68.94)<br>רכב 5 מקומות<br><span class="mut">ציון הספק: 5.6</span></div>
+<div class="card"><h3>↩️ ביטול</h3>ביטול חינם לפני <b>5.2.2027</b> (05:29 שעון אינדיאנפוליס ≈ 12:29 שעון ישראל)</div>
+<div class="card"><h3>🪪 להביא באיסוף</h3>• רישיונות נהיגה<br>• דרכון<br>• כרטיס אשראי על שם הנהג<br>• ייתכן שנדרש רישיון נהיגה בינלאומי</div>
+</div>
+<h2 style="margin-top:20px">🛣️ נסיעות</h2>
+<div class="card tw"><table><tr><th></th><th><span class="pill a">A</span> Fortini</th><th><span class="pill b">B</span> Cervinia</th></tr>
+<tr><td>ממלפנסה</td><td>~264 ק״מ · ~3:40 ש׳</td><td>~181 ק״מ · ~2:20 ש׳</td></tr>
+<tr><td>7.2: רכב 11:30 → הגעה משוערת</td><td>~15:30 (לפני עצירות)</td><td>~14:00 (צ׳ק-אין 16:00–20:00)</td></tr>
+<tr><td>12.2: יציאה משוערת להחזרה עד 07:00</td><td>~03:00</td><td>~04:30 (לפני חלון הצ׳ק-אאוט 08:00–10:00 – לתאם)</td></tr>
+<tr><td>חניה</td><td>€10 ליום במלון</td><td>גראז׳ בתשלום ~500 מ׳</td></tr>
+<tr><td>מסלול</td><td><a href="https://www.google.com/maps/dir/Milano+Malpensa+Airport/Hotel+Fortini+Madonna+di+Campiglio" target="_blank">גוגל מפות</a></td><td><a href="https://www.google.com/maps/dir/Milano+Malpensa+Airport/Via+J.+B.+Bich+16+Breuil-Cervinia" target="_blank">גוגל מפות</a></td></tr>
+</table><p class="mut">זמני נסיעה לפי OSRM ללא פקקים ושלג – בחורף לתכנן מרווח. שעות הגעה/יציאה הן הערכה.</p></div>
+<div class="card ok" style="margin-top:14px">✅ הזמנות מרץ השגויות בוטלו: HelloCHALET 6100201391 (חינם) ורכב 762317234 (החזר ₪649.66, עד 7 ימי עסקים). אין הזמנות פעילות במרץ.</div>
+<h3>✅ צ׳קליסט משותף (נשמר בדפדפן)</h3><div class="card"><ul class="chk" id="chk"></ul></div>
+</section>
+</main>
+<div id="lb" onclick="this.className='';this.style.display='none'"><img id="lbi" src="" alt=""></div>
+<footer>נבנה ע״י Grok Bot · 27.10.2026 · איחוד הדשבורדים של <a href="https://eylonrosner-collab.github.io/ski-2027-campiglio/">קמפיליו</a> ו<a href="https://eylonrosner-collab.github.io/ski-2027-cervinia/">צ׳רביניה</a> · כל הנתונים עם קישור למקור; מה שלא אומת מסומן</footer>
+<script>
+const tops=[...document.querySelectorAll('section.top')],nav=document.getElementById('tabs'),maps={};
+tops.forEach((s,i)=>{const b=document.createElement('button');b.textContent=s.dataset.t;b.onclick=()=>go(s.id);nav.appendChild(b);
+ const sn=s.querySelector('.subnav');if(sn){[...s.querySelectorAll('.sub')].forEach(x=>{const c=document.createElement('button');c.textContent=x.dataset.t;c.onclick=()=>go(s.id,x.id);sn.appendChild(c)})}});
+function go(t,sub){const i=tops.findIndex(s=>s.id==t);tops.forEach((s,j)=>s.classList.toggle('on',i==j));[...nav.children].forEach((b,j)=>b.classList.toggle('on',i==j));
+ const s=tops[i],subs=[...s.querySelectorAll('.sub')];let h=t;
+ if(subs.length){let k=subs.findIndex(x=>x.id==sub);if(k<0)k=0;subs.forEach((x,j)=>x.classList.toggle('on',j==k));[...s.querySelector('.subnav').children].forEach((b,j)=>b.classList.toggle('on',j==k));h=subs[k].id;initMap(subs[k])}
+ nav.children[i].scrollIntoView({block:'nearest',inline:'nearest'});
+ history.replaceState(null,'','#'+h);window.scrollTo({top:0})}
+function route(){const h=location.hash.slice(1);const sub=document.getElementById(h);if(sub&&sub.classList.contains('sub'))go(sub.closest('section').id,h);else go(tops.some(s=>s.id==h)?h:'ov')}
+const dd=t=>Math.ceil((new Date(t)-new Date())/864e5);
+const d=dd('2027-02-07');document.getElementById('cd').textContent=d>0?`עוד ${d} ימים`:'בחופשה!';
+const c=dd('2027-01-08');document.getElementById('cdd').textContent=c>0?`עוד ${c} ימים`:'עבר';document.getElementById('cdc').textContent=c>0?`(עוד ${c} ימים)`:'(עבר)';
+document.querySelectorAll('#tl li').forEach(li=>{if(dd(li.dataset.d)<0)li.classList.add('past')});
+function lb(e,big){const l=document.getElementById('lb');document.getElementById('lbi').src=e.src;l.className=big?'big':'fit';l.style.display=big?'block':'flex'}
+const MP={mapA:[[46.240,10.845],13,[["🏨 Hotel Fortini","Via Cima Tosa 25, Campo Carlo Magno",46.2455,10.8395,'#dc2626'],
+["🚡 Fortini Express","40 מ׳ מהמלון",46.2458,10.8402,'#2563eb'],["🚡 Grostè (תחנה תחתונה)","~250 מ׳",46.2468,10.8425,'#2563eb'],["🚡 Pradalago","~1.4 ק״מ",46.2335,10.8270,'#2563eb'],
+["🏫 Scuola Sci CCM","Via Zeledria 8",46.2450,10.8380,'#16a34a'],["🍽️ Rifugio Boch","תחנת אמצע גרוסטה, 2,085 מ׳ · מפגש Zebra",46.2470,10.8610,'#f59e0b'],
+["🍽️ Rifugio Graffer","2,260 מ׳",46.2440,10.8720,'#f59e0b'],["🍽️ Rifugio Stoppani","Passo Grostè ~2,500 מ׳",46.2380,10.8880,'#f59e0b'],["🍽️ Chalet Fiat","Monte Spinale",46.2330,10.8530,'#f59e0b'],
+["🏘️ מרכז העיירה","Madonna di Campiglio",46.2297,10.8268,'#7c3aed']]],
+mapB:[[45.938,7.638],14,[["🏠 HelloCHALET Front Row","Via J. B. Bich 16",45.9375,7.6315,'#dc2626'],
+["🚡 Cretaz","~15 מ׳ · ski-in/ski-out",45.9378,7.6309,'#2563eb'],["🚡 Breuil – Plan Maison / Plateau Rosà","~750 מ׳ / 6 דק׳ הליכה",45.9360,7.6335,'#2563eb'],
+["⛷️ Plan Maison","תחנת אמצע",45.9416,7.6548,'#2563eb'],["🇨🇭 Plateau Rosà","מעבר לצרמט",45.9345,7.7076,'#7c3aed'],["🏘️ מרכז Breuil-Cervinia","",45.9356,7.6304,'#16a34a']]]};
+function initMap(sub){const el=sub.querySelector('.map');if(!el||!window.L)return;const id=el.id;
+ if(maps[id]){setTimeout(()=>maps[id].invalidateSize(),50);return}
+ setTimeout(()=>{const [c,z,P]=MP[id];const m=L.map(id).setView(c,z);L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap'}).addTo(m);
+ P.forEach(p=>L.circleMarker([p[2],p[3]],{radius:9,color:p[4],fillOpacity:.85}).addTo(m).bindPopup(`<b>${p[0]}</b><br>${p[1]}<br><i>מיקום משוער</i>`));maps[id]=m},30)}
+const R=[["Rifugio Graffer","slope","casual","2,260 מ׳ ליד הגרוסטה. מטבח טרנטינו ביתי: קנדרלי, סטינקו ופולנטה, שטרודל. מרפסת פנורמית.","€€","https://graffer.com/Ristorante"],
+["Rifugio Stoppani","slope","fine","Passo Grostè ~2,500 מ׳. בר, סלף-סרוויס, פיצה ומסעדת גורמה. ממוצע €10–35. גם ארוחות ערב (סנואוקט).","€€–€€€","https://www.stoppanidolomiteslodge.it/ristorante-madonna-di-campiglio"],
+["Rifugio Boch","slope","casual","תחנת אמצע גרוסטה, 2,085 מ׳. אווירה צעירה, מרפסת עם DJ. נקודת מפגש מושלמת עם בר אחרי השיעור.","€€","https://www.campigliodolomiti.it/it/servizi/boch"],
+["Chalet Fiat","slope","casual","מונטה ספינאלה. סלף-סרוויס + מסעדה 12–15. ממוצע ~€40.","€€€","https://www.scattidigusto.it/madonna-di-campiglio-i-migliori-ristoranti"],
+["Rifugio Doss del Sabion","slope","casual","באזור פינצולו. נוף לברנטה ולאדמלו. ממוצע ~€30. ליום טיול.","€€","https://www.scattidigusto.it/madonna-di-campiglio-i-migliori-ristoranti"],
+["Cascina Zeledria","slope","casual","מסעדה על המסלולים של משפחת Artini, אזור Zeledria – קרוב למלון. פרטים נוספים לא אומתו.","?","https://www.scattidigusto.it/madonna-di-campiglio-i-migliori-ristoranti"],
+["Il Gallo Cedrone","town","fine","כוכב מישלן, Hotel Bertelli, Via Cima Tosa 80. תפריטי טעימות €109/€139 (2023). סגור בשני.","€€€€","https://www.scattidigusto.it/madonna-di-campiglio-i-migliori-ristoranti"],
+["Stube Hermitage","town","fine","כוכב מישלן (לפי המקור, 2023), Biohotel Hermitage. טעימות €90–180.","€€€€","https://www.scattidigusto.it/madonna-di-campiglio-i-migliori-ristoranti"],
+["Ristorante Artini","town","casual","מול גונדולת Pradalago. מטבח טרנטינו ובשר על הגריל, עיקריות €15–30. מומלץ להזמין.","€€","https://www.scattidigusto.it/madonna-di-campiglio-i-migliori-ristoranti"],
+["The Hungry Wolf","town","casual","פאב-מסעדה למרגלות המסלולים, פיצות, המבורגרים, בירות. ~€35–40. טוב לנוער.","€€","https://www.scattidigusto.it/madonna-di-campiglio-i-migliori-ristoranti"],
+["Home Stube","town","casual","מבשלת בירה במרכז, המבורגרים ומנות טרנטינו, עיקריות €15–30.","€€","https://www.scattidigusto.it/madonna-di-campiglio-i-migliori-ristoranti"]];
+const fl=document.getElementById('flA');function rf(f){fl.innerHTML=R.filter(r=>f=='all'||r[1]==f||r[2]==f).map(r=>`<div class="card"><h3>${r[0]}</h3><span class="tag">${r[1]=='slope'?'⛷️ על המסלול':'🏘️ בעיירה'}</span><span class="tag">${r[2]=='fine'?'גורמה':'קז׳ואל'}</span><span class="tag">${r[4]}</span><p>${r[3]}</p><a href="${r[5]}" target="_blank">מקור</a></div>`).join('')}rf('all');
+document.querySelectorAll('#ff button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#ff button').forEach(x=>x.classList.remove('on'));b.classList.add('on');rf(b.dataset.f)});
+const C=["🔔 להחליט פורטיני/צ׳רביניה – עד 7.1.2027 (צ׳רביניה מחויבת ב-5.1)","לבטל את המלון שלא נבחר (צ׳רביניה עד 7.1 / פורטיני עד ~2.2)","🚗 לשנות את שעת החזרת הרכב ב-12.2 ל-~07:00 (במקום 11:30)","✈️ לוודא את הטיסות לפני מועד הביטול העצמי (30.1)","דרכונים/ת״ז לכולם + ביטוח נסיעות שכולל סקי","רישיונות נהיגה, כרטיס אשראי על שם הנהג, רישיון בינלאומי אם נדרש","הזמנת קורס סנובורד לבר","קניית סקיפס אונליין (4 ימים)","קסדות, משקפי סקי, קרם הגנה","שכבות תרמיות, כפפות, צווארונים","B: לוודא הגעה לפני 20:00, לשריין חניה, לתאם יציאה מוקדמת ב-12.2, כרטיס לפיקדון €500","B: קניות סופר לדירה בדרך","A: לרשום שם אורח בחדר לארבעה; מזומן/כרטיס למס עיר (~€50) וחניה (€10/יום)"];
+const st=JSON.parse(localStorage.getItem('chk27')||'{}');document.getElementById('chk').innerHTML=C.map((x,i)=>`<li><label><input type="checkbox" data-i="${i}" ${st[i]?'checked':''}>${x}</label></li>`).join('');
+document.querySelectorAll('#chk input').forEach(x=>x.onchange=()=>{st[x.dataset.i]=x.checked;localStorage.setItem('chk27',JSON.stringify(st))});
+if(window.Chart){new Chart(document.getElementById('pieA'),{type:'doughnut',data:{labels:['כחול 50','אדום 72','שחור 33'],datasets:[{data:[50,72,33],backgroundColor:['#2563eb','#dc2626','#111']}]}});
+new Chart(document.getElementById('wxc'),{type:'bar',data:{labels:['weatherapi','weather-atlas','easeweather','weather-and-climate*'],datasets:[{label:'מקס׳ °C',data:[1,0.8,2,1],backgroundColor:'#f59e0b'},{label:'מינ׳ °C',data:[-8,-7.5,-5,-10],backgroundColor:'#0ea5e9'}]},options:{plugins:{tooltip:{rtl:true}}}});
+new Chart(document.getElementById('pieB'),{type:'doughnut',data:{labels:['דירה ~$3,403','מע״מ ~$340','דמי שירות ~$279','מס עיר ~$67'],datasets:[{data:[3403,340,279,67],backgroundColor:['#1d4ed8','#0ea5e9','#f59e0b','#16a34a']}]}});
+new Chart(document.getElementById('pist'),{type:'doughnut',data:{labels:['כחול 39','אדום 107','שחור 12'],datasets:[{data:[39,107,12],backgroundColor:['#2563eb','#dc2626','#111']}]}})}
+window.addEventListener('hashchange',route);route();
+</script></body></html>
