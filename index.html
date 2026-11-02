@@ -66,6 +66,18 @@ footer{text-align:center;color:var(--mut);font-size:.85rem;padding:20px}
 .tlx-leg .dl{font-weight:700;min-width:118px}.tlx-leg .left{margin-inline-start:auto;font-weight:700;white-space:nowrap}.tlx-leg .left.past{color:var(--mut);font-weight:400}.tlx-leg .left.soon{color:var(--red)}
 .tlx-key{display:flex;flex-wrap:wrap;gap:10px;font-size:.8rem;margin-top:8px}.tlx-key span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-inline-end:5px;vertical-align:-2px;background:var(--c)}
 @media(max-width:600px){.map{height:320px}td,th{font-size:.85rem;padding:6px 5px}.tl b.d{display:block}}
+.note{border-top:4px solid var(--pri)}.note.b{border-top-color:var(--b)}.note.c{border-top-color:#0f766e}
+.note textarea{width:100%;min-height:110px;resize:none;overflow:hidden;border:1px solid #c7d2fe;border-radius:10px;padding:10px 12px;font:inherit;line-height:1.6;color:var(--ink);background:#f8faff;direction:rtl}
+.note.b textarea{border-color:#ddd6fe;background:#faf8ff}.note.c textarea{border-color:#99f6e4;background:#f5fffd}
+.note textarea:focus,.myadd input:focus,ul.my input.ed:focus,#xio textarea:focus{outline:2px solid var(--acc);outline-offset:1px}
+.saved{font-size:.8rem;color:#16a34a;margin-inline-start:8px;opacity:0;transition:opacity .3s}.saved.on{opacity:1}
+.myadd{display:flex;gap:8px;margin-bottom:10px}.myadd input{flex:1;min-width:0;border:1px solid #c7d2fe;border-radius:10px;padding:9px 12px;font:inherit}
+.btn2{border:0;background:var(--pri);color:#fff;padding:9px 16px;border-radius:10px;font-weight:700;cursor:pointer;font:inherit}.btn2.l{background:#eef2ff;color:var(--pri)}
+ul.my{list-style:none;padding:0;margin:0}ul.my li{display:flex;align-items:center;gap:8px;padding:6px 4px;border-bottom:1px solid #eef1f7}
+ul.my li input[type=checkbox]{transform:scale(1.2);flex:0 0 auto}ul.my li .tx{flex:1;cursor:text;white-space:pre-wrap;word-break:break-word}ul.my li.done .tx{text-decoration:line-through;color:var(--mut)}
+ul.my li input.ed{flex:1;border:1px solid #c7d2fe;border-radius:8px;padding:5px 8px;font:inherit}
+ul.my li button{border:0;background:none;cursor:pointer;font-size:1rem;padding:2px 6px;border-radius:6px}ul.my li button:hover{background:#eef2ff}
+#xio textarea{width:100%;min-height:90px;border:1px solid #c7d2fe;border-radius:10px;padding:8px;font-family:monospace;font-size:.8rem;direction:ltr}
 </style></head><body>
 <header><h1>🏔️ סקי 2027 · משפחת רוזנר</h1><p>שלוש הזמנות מקבילות לאותם תאריכים:<br>🅰️ <bdi dir="ltr">Madonna di Campiglio (Hotel Fortini)</bdi><br>🅱️ <bdi dir="ltr">Breuil-Cervinia (HelloCHALET)</bdi><br>🅲 <bdi dir="ltr">Val Thorens (Mountain Hideaway)</bdi></p>
 <div class="chips"><span class="chip">📅 א׳ 7.2 – ו׳ 12.2.2027 · 5 לילות</span><span class="chip">👨‍👩‍👦 5 נפשות · 4 גולשים</span><span class="chip">✈️ LY381 / LY382 · מלפנסה</span><span class="chip">⏳ לחופשה: <span id="cd"></span></span><span class="chip">🧭 להחלטה (7.1): <span id="cdd"></span></span></div></header>
@@ -147,6 +159,7 @@ footer{text-align:center;color:var(--mut);font-size:.85rem;padding:20px}
 <div class="card"><div class="tlx" id="tl-a"></div><p class="mut">מועד הביטול החינמי לפי ההזמנה: בערך 2.2.2027 (השעה המדויקת לא רשומה – לבדוק ב-Booking).</p></div>
 <h2 style="margin-top:22px">🗺️ מפה</h2><div id="mapA" class="map"></div>
 <p class="src">⚠️ המיקומים על המפה משוערים (לפי מיקום כללי, לא כתובות מדויקות), למעט האזור הכללי של המלון. מפה: © OpenStreetMap.</p>
+<div class="card note" style="margin-top:14px"><h3>📝 ההתרשמות שלי · קמפיליו<span class="saved" data-saved="A">✓ נשמר</span></h3><textarea data-note="A" placeholder="מה אהבתי, מה מפריע, שאלות פתוחות, ציון אישי... (נשמר אוטומטית בדפדפן)"></textarea><div class="src">נשמר אוטומטית בדפדפן הזה בלבד · מסונכרן עם לשונית ההשוואה</div></div>
 </div>
 
 <div class="sub" id="a-ski" data-t="אזור הסקי">
@@ -273,6 +286,7 @@ footer{text-align:center;color:var(--mut);font-size:.85rem;padding:20px}
 <h2 style="margin-top:22px">📸 תמונות</h2>
 <div class="gal"><img src="assets/cervinia/photo1.jpg" alt="" onclick="lb(this)"><img src="assets/cervinia/photo2.jpg" alt="" onclick="lb(this)"><img src="assets/cervinia/photo3.jpg" alt="" onclick="lb(this)"><img src="assets/cervinia/photo4.jpg" alt="" onclick="lb(this)"></div>
 <p class="src">תמונות: Booking.com</p>
+<div class="card note b" style="margin-top:14px"><h3>📝 ההתרשמות שלי · צ׳רביניה<span class="saved" data-saved="B">✓ נשמר</span></h3><textarea data-note="B" placeholder="מה אהבתי, מה מפריע, שאלות פתוחות, ציון אישי... (נשמר אוטומטית בדפדפן)"></textarea><div class="src">נשמר אוטומטית בדפדפן הזה בלבד · מסונכרן עם לשונית ההשוואה</div></div>
 </div>
 
 <div class="sub" id="b-cost" data-t="עלויות">
@@ -381,6 +395,7 @@ footer{text-align:center;color:var(--mut);font-size:.85rem;padding:20px}
 <div class="card"><h3>✈️ טיסות</h3>לז׳נבה – <b>טרם נקבע</b><br><span class="mut">צ׳ק-אאוט עד 10:00 ב-12.2; עם ~2:45 ש׳ לז׳נבה – לבחור טיסה בהתאם, או לשקול לילה אחרון ליד ז׳נבה לטיסת בוקר.</span></div>
 <div class="card"><h3>👍 / 👎</h3><b>בעד:</b> הכפר הגבוה באירופה, השלג הטוב ביותר, 600 ק״מ, הרבה מקומות ski-in/out.<br><b>נגד:</b> עומס חופשות, הרכב עומד חונה כל השבוע, נסיעה ארוכה ביום העזיבה, מעט מקומות עם ציון 9+.</div>
 </div>
+<div class="card note c" style="margin-top:14px"><h3>📝 ההתרשמות שלי · ואל טורנס<span class="saved" data-saved="C">✓ נשמר</span></h3><textarea data-note="C" placeholder="מה אהבתי, מה מפריע, שאלות פתוחות, ציון אישי... (נשמר אוטומטית בדפדפן)"></textarea><div class="src">נשמר אוטומטית בדפדפן הזה בלבד · מסונכרן עם לשונית ההשוואה</div></div>
 </div>
 
 <div class="sub" id="c-stay" data-t="הדירה שהוזמנה">
@@ -503,6 +518,8 @@ footer{text-align:center;color:var(--mut);font-size:.85rem;padding:20px}
 </div>
 <div class="card opt c" style="margin-top:14px"><h3><span class="pill c">C</span> ואל טורנס – בעד ונגד</h3><b>👍 בעד</b><ul class="pc"><li>דירה שלמה עם 2 חדרי שינה ומרפסת, ski-in/ski-out</li><li>ביטול חינם עד 30.1 – גמיש יותר מצ׳רביניה</li><li>הכפר הגבוה באירופה (2,300 מ׳) – השלג הטוב ביותר</li><li>600 ק״מ ב-3 Vallées</li><li>הרבה מקומות ski-in/ski-out</li></ul><b>👎 נגד</b><ul class="pc"><li>השבוע הראשון של חופשת פריז – עומס</li><li>רכב עומד כל השבוע (חניה ~€100)</li><li>נסיעה ארוכה ביום העזיבה – אולי לילה ליד ז׳נבה</li><li>הלינה היקרה מבין השלוש (€3,959.32), בלי ארוחות; רק 2 ביקורות</li></ul><b>💶 עלויות נלוות</b><ul class="pc"><li>סקיפס זול יותר: רק 4 גולשים – €1,069.60–€1,225.60 ל-4 ימים</li><li>לינה + סקיפס 4 ימים ל-4: €5,028.92; עם ציוד €5,536.47 – היקרה מבין השלוש (אבל הציוד הכי זול: €507.55 אונליין)</li><li>רכב בז׳נבה הוזמן: ₪1,533 (~€436.91) → סה״כ כולל רכב €5,973.38</li><li>טיסות לז׳נבה עוד לא נקבעו; טיסות אל על הקיימות הן למלפנסה</li></ul></div>
 <div class="card" style="margin-top:14px"><b>סיכום (5 נפשות, 4 גולשים, 4 ימי סקי):</b> לינה + סקיפס + ציוד – צ׳רביניה <b>€5,003</b>, קמפיליו <b>€5,404.14</b> (כולל בוקר), ואל טורנס <b>€5,536.47</b>, ועם הרכב בז׳נבה <b>€5,973.38</b> (+ טיסות לז׳נבה שעוד לא תומחרו; ב-A/B יש להוסיף את רכב מלפנסה $227.71). צ׳רביניה נותנת ski-in/ski-out אמיתי, אזור סקי גדול וגבוה וסקיפס זול, אבל הדירה קטנה עם חדר רחצה אחד; פורטיני כולל ארוחת בוקר ושני חדרים. <b>ההחלטה על צ׳רביניה נדרשת עד 7.1.2027</b> (החיוב ב-5.1); ואל טורנס עד 30.1 23:59; פורטיני גמיש עד ~2.2. בחירה בוואל טורנס מחייבת גם טיסות לז׳נבה (הרכב כבר הוזמן, ביטול חינם עד 5.2 12:00).</div>
+<h2 style="margin-top:20px">📝 ההתרשמויות שלי – זו לצד זו</h2>
+<div class="grid"><div class="card note"><h3><span class="pill a">A</span> קמפיליו<span class="saved" data-saved="A">✓ נשמר</span></h3><textarea data-note="A" placeholder="ההתרשמות שלי מ-קמפיליו..."></textarea></div><div class="card note b"><h3><span class="pill b">B</span> צ׳רביניה<span class="saved" data-saved="B">✓ נשמר</span></h3><textarea data-note="B" placeholder="ההתרשמות שלי מ-צ׳רביניה..."></textarea></div><div class="card note c"><h3><span class="pill c">C</span> ואל טורנס<span class="saved" data-saved="C">✓ נשמר</span></h3><textarea data-note="C" placeholder="ההתרשמות שלי מ-ואל טורנס..."></textarea></div></div>
 </section>
 
 <!-- ============ CAR & LOGISTICS ============ -->
@@ -524,6 +541,8 @@ footer{text-align:center;color:var(--mut);font-size:.85rem;padding:20px}
 <div class="card warn" style="margin-top:14px"><h3><span class="pill c">C</span> רכב לוואל טורנס</h3><b>הוזמן: Booking.com Cars 791213871 · Enterprise Peugeot 3008 או דומה, אוטומט, 5 מקומות, 4 מזוודות · צד צרפתי של נמל התעופה בז׳נבה (GGV), בתוך הטרמינל.</b> סטטוס: ממתין לאישור Enterprise (עד 24 ש׳). איסוף 7.2 12:00 · החזרה 12.2 08:00 · <b>₪1,533 (~€436.91)</b> כולל השתתפות עצמית €0 · ביטול חינם עד <b>5.2.2027 12:00</b> · פיקדון €300 · בלי שרשראות – לבקש צמיגי חורף באיסוף (Loi Montagne) · אפשריים בדלפק: דמי ניהול עד €45.15 + דמי חורף (סכום לא ידוע) · שווייץ €55 לפי בקשה. הרכב ממלפנסה לא רלוונטי לאפשרות זו. נסיעה ~2:45 ש׳; חניה מקורה ~€100 לשבוע; החזרת הרכב 12.2 עד 08:00 (צ׳ק-אאוט עד 10:00); שעות הטיסות לז׳נבה – טרם נקבעו. ראו לשונית ואל טורנס ← הגעה.</div>
 <div class="card ok" style="margin-top:14px">✅ הזמנות מרץ השגויות בוטלו: HelloCHALET 6100201391 (חינם) ורכב 762317234 (החזר ₪649.66, עד 7 ימי עסקים). אין הזמנות פעילות במרץ.</div>
 <h3>✅ צ׳קליסט משותף (נשמר בדפדפן)</h3><div class="card"><ul class="chk" id="chk"></ul></div>
+<h3>📌 המנהלות שלי – ציוד ומשימות (טקסט חופשי)</h3><div class="card"><div class="myadd"><input id="myIn" type="text" placeholder="למשל: לקנות משקפי סקי לבן ה-12" enterkeyhint="done"><button class="btn2" id="myAdd" type="button">הוסף</button></div><ul class="my" id="myList"></ul><p class="mut" id="myEmpty">עוד אין פריטים. כתוב ולחץ "הוסף" או Enter. לחיצה על טקסט = עריכה · ☑ = בוצע · 🗑 = מחיקה.</p></div>
+<details id="xio" style="margin-top:14px"><summary>💾 גיבוי / העברה למכשיר אחר (ייצוא / ייבוא)</summary><div><p class="mut">ההתרשמויות, המנהלות שלי והצ׳קליסט נשמרים <b>בדפדפן הזה בלבד</b> (localStorage) ושורדים רענון ועדכוני אתר. כדי להעביר לטלפון/מחשב אחר: "העתק גיבוי" כאן ← "הדבק וייבא" שם.</p><div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px"><button class="btn2" type="button" id="xExp">📋 העתק גיבוי</button><button class="btn2 l" type="button" id="xImp">📥 הדבק וייבא</button><span class="saved" id="xMsg"></span></div><textarea id="xTxt" placeholder="כאן יופיע/יודבק הגיבוי (JSON)"></textarea></div></details>
 </section>
 </main>
 <div id="lb" onclick="this.className='';this.style.display='none'"><img id="lbi" src="" alt=""></div>
@@ -612,4 +631,42 @@ const CARG={n:'🚗 רכב ז׳נבה · 791213871',segs:[['2026-10-25T00:00:00+
  m:[['2027-02-05T12:00:00+01:00','5.2 12:00 ז׳נבה','r','סוף ביטול חינם של הרכב בז׳נבה (12:00 שעון ז׳נבה, 48 ש׳ לפני האיסוף)'],['2027-02-07T12:00:00+01:00','7.2 איסוף','f','איסוף ב-GGV 12:00 שעון ז׳נבה'],['2027-02-12T08:00:00+01:00','12.2 החזרה','f','החזרה ב-GGV עד 08:00 שעון ז׳נבה']]};
 render('tl-fly',FLY);render('tl-a',[A]);render('tl-b',[B]);render('tl-c',[C,CARG]);render('tl-all',[FLY[0],B,C,CARG,A,CAR]);
 })();
-</script></body></html>
+</script>
+<script>
+/* ===== user notes & admin items — STORAGE KEYS ARE STABLE, do not rename: ski27-note-A/B/C, ski27-my-admin, chk27 ===== */
+(function(){
+const LS={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:v}catch(e){return d}},set(k,v){try{localStorage.setItem(k,v);return true}catch(e){return false}}};
+const NK=o=>'ski27-note-'+o, AK='ski27-my-admin';
+const grow=t=>{t.style.height='auto';t.style.height=Math.max(110,t.scrollHeight+2)+'px'};
+const flash=o=>document.querySelectorAll('[data-saved="'+o+'"]').forEach(e=>{e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),1200)});
+const tas=[...document.querySelectorAll('textarea[data-note]')];
+function loadNotes(){tas.forEach(t=>{t.value=LS.get(NK(t.dataset.note),'');grow(t)})}
+tas.forEach(t=>{t.addEventListener('input',()=>{const o=t.dataset.note;LS.set(NK(o),t.value);tas.forEach(u=>{if(u!==t&&u.dataset.note===o){u.value=t.value;grow(u)}});grow(t);flash(o)})});
+// grow when a hidden tab becomes visible
+const reGrow=()=>setTimeout(()=>tas.forEach(grow),60);window.addEventListener('hashchange',reGrow);document.addEventListener('click',e=>{if(e.target.closest('nav,.subnav,.btn'))reGrow()});window.addEventListener('resize',reGrow);
+// admin list
+const list=document.getElementById('myList'),inp=document.getElementById('myIn'),empty=document.getElementById('myEmpty');
+let items=[];try{items=JSON.parse(LS.get(AK,'[]'))||[]}catch(e){items=[]}
+const save=()=>LS.set(AK,JSON.stringify(items));
+const esc=x=>x.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function draw(){if(!list)return;list.innerHTML=items.map((it,i)=>`<li class="${it.done?'done':''}" data-i="${i}"><input type="checkbox" ${it.done?'checked':''} aria-label="בוצע"><span class="tx" title="לחץ לעריכה">${esc(it.t)}</span><button type="button" class="e" title="עריכה">✏️</button><button type="button" class="d" title="מחיקה">🗑</button></li>`).join('');empty.style.display=items.length?'none':''}
+function add(){const v=inp.value.trim();if(!v)return;items.push({t:v,done:false,ts:Date.now()});save();inp.value='';draw();inp.focus()}
+function edit(li){const i=+li.dataset.i,sp=li.querySelector('.tx');if(!sp)return;const ed=document.createElement('input');ed.className='ed';ed.value=items[i].t;sp.replaceWith(ed);ed.focus();ed.select();let fin=false;
+ const done=ok=>{if(fin)return;fin=true;const v=ed.value.trim();if(ok&&v){items[i].t=v;save()}draw()};ed.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();done(true)}if(e.key==='Escape')done(false)});ed.addEventListener('blur',()=>done(true))}
+if(list){document.getElementById('myAdd').onclick=add;inp.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.isComposing){e.preventDefault();add()}});
+ list.addEventListener('click',e=>{const li=e.target.closest('li');if(!li)return;const i=+li.dataset.i;
+  if(e.target.matches('input[type=checkbox]')){items[i].done=e.target.checked;save();li.classList.toggle('done',items[i].done)}
+  else if(e.target.closest('button.d')){if(confirm('למחוק את "'+items[i].t+'"?')){items.splice(i,1);save();draw()}}
+  else if(e.target.closest('button.e')||e.target.matches('.tx'))edit(li)});draw()}
+// export / import
+const xT=document.getElementById('xTxt'),xM=document.getElementById('xMsg');const msg=m=>{xM.textContent=m;xM.classList.add('on');setTimeout(()=>xM.classList.remove('on'),2500)};
+if(xT){document.getElementById('xExp').onclick=()=>{const d={v:1,exported:new Date().toISOString(),notes:{A:LS.get(NK('A'),''),B:LS.get(NK('B'),''),C:LS.get(NK('C'),'')},admin:items,chk27:JSON.parse(LS.get('chk27','{}')||'{}')};xT.value=JSON.stringify(d,null,1);xT.select();
+  (navigator.clipboard?navigator.clipboard.writeText(xT.value):Promise.reject()).then(()=>msg('✓ הועתק ללוח'),()=>{try{document.execCommand('copy');msg('✓ הועתק')}catch(e){msg('סמן והעתק ידנית')}})};
+ document.getElementById('xImp').onclick=()=>{let d;try{d=JSON.parse(xT.value)}catch(e){msg('⚠️ JSON לא תקין');return}if(!d||typeof d!=='object'){msg('⚠️ לא תקין');return}
+  if(!confirm('הייבוא יחליף את ההתרשמויות, המנהלות והצ׳קליסט בדפדפן הזה. להמשיך?'))return;
+  if(d.notes)['A','B','C'].forEach(o=>{if(typeof d.notes[o]==='string')LS.set(NK(o),d.notes[o])});if(Array.isArray(d.admin)){items=d.admin.filter(x=>x&&typeof x.t==='string');save()}if(d.chk27&&typeof d.chk27==='object')LS.set('chk27',JSON.stringify(d.chk27));
+  msg('✓ יובא – טוען מחדש');setTimeout(()=>location.reload(),700)}}
+loadNotes();reGrow();
+})();
+</script>
+</body></html>
